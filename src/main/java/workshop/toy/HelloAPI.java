@@ -4,24 +4,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
-public class HelloAPI {
+public class HelloApi {
 
-    @GetMapping("hello/Than")
-    public Message SayHi(@PathVariable String name) {
+
+    @GetMapping("/hello/{name}")
+    public Message sayHi(@PathVariable String name){
 
         Message message = new Message();
-        message.name = "Hello" + name;
-        return message;
+        message.name = "Hello "  + name ;
+        return  message;
+
     }
 
-    Class Message {
+    class Message{
         public String name;
-
     }
-
-
 
 }
-
