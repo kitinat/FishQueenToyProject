@@ -4,6 +4,14 @@ public class Age {
     private int id;
     private String age_name;
 
+    public Age() {
+    }
+
+    public Age(int id, String age_name) {
+        this.id = id;
+        this.age_name = age_name;
+    }
+
     public int getId() {
         return id;
     }
