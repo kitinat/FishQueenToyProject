@@ -1,9 +1,8 @@
-package toy.repositories;
+package workshop.toy.repositories;
 
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import toy.models.Age;
+import workshop.toy.models.Age;
 
 import java.util.List;
 
