@@ -53,14 +53,8 @@
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-<<<<<<< HEAD
-		</dependency>
-
-
-=======
             <scope>test</scope>
 		</dependency>
->>>>>>> 08a796954252c1c50239e4c0d8239d5f943fce84
 	</dependencies>
 
 	<repositories>
