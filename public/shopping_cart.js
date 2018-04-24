@@ -24,15 +24,18 @@ $( document ).ready(function() {
     getMaxStock[1] = '1';
     getPrice[1] = '119.95';
 
+    var stock_status = 'In stock';
+    var drop_down_qty ='';
     for (i = 0; i < getProductID.length; i++) {
-        if (getMaxStock[i] == ){
+        if (getMaxStock[i] <1){
+            stock_status ='Out of stock';
         };
         var cart_detail = "<tr>";
         cart_detail += "<th scope='row'>";
-        cart_detail += "<div class='product_name'>"+getProductName[i]+" </b>"+getBrand[i]+"</div>";
-        cart_detail += "<div class='production_criteria'>Gender : "+getGender[i]+"  Age : "+getAge[1]+" </div>";
-        cart_detail += "<div class='instock'>In stock </div>";
-        cart_detail += "<a href='#'>Delete</a>";
+        cart_detail += "<div class='product_name'><b>"+getProductName[i]+" </b>&nbsp&nbsp&nbsp by "+getBrand[i]+"</div>";
+        cart_detail += "<div class='production_criteria'>Gender : "+getGender[i]+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAge : "+getAge[1]+" </div>";
+        cart_detail += "<div class='instock'>"+stock_status+"&nbsp&nbsp(available stock : "+getMaxStock[i]+")</div>";
+        cart_detail += "<a href=del/'"+getProductID[i]+"'>Delete</a>";
         cart_detail += "</th>";
         cart_detail += "<td>";
         cart_detail += "<select>";
