@@ -19,6 +19,18 @@ html {
   min-width: 220px;
 }
 
+.form-group {
+  padding: 1rem 1rem 0.2rem 1rem;
+  margin-bottom: 1px;
+}
+
+
+.form-row {
+  padding: 0rem 1rem 0.5rem 1rem;
+  margin-bottom: 0 px;
+  margin-top: 0px;
+}
+
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
