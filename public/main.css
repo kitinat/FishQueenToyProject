@@ -20,7 +20,7 @@ color: white;
 
 
 body {
-    background-color: #d4d0d0;
+    background-color: #ffffff;
 }
 
 .breadcrumb-item.active {
@@ -34,4 +34,22 @@ body {
 
 .a-white {
     color: #d0d0d0;
+}
+
+.card-body{
+    background: #f1f1f1;}
+
+.btn-chelsea {
+    color: #fff;
+    background-color: #011489;
+    border-color: #011489;
+}
+
+.container-footer{
+  max-width: 80%;
+  margin-top: 50px;
+}
+
+.container {
+  max-width: 80%;
 }
