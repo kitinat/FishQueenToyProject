@@ -13,6 +13,23 @@ public class Product {
     private String brand_name;
     private String availability;
 
+    public Product() {
+    }
+
+    public Product(int id, String product_name, int gender_id, int age_id, int brand_id, double price, int qty, String gender_name, String age_name, String brand_name, String availability) {
+        this.id = id;
+        this.product_name = product_name;
+        this.gender_id = gender_id;
+        this.age_id = age_id;
+        this.brand_id = brand_id;
+        this.price = price;
+        this.qty = qty;
+        this.gender_name = gender_name;
+        this.age_name = age_name;
+        this.brand_name = brand_name;
+        this.availability = availability;
+    }
+
     public int getId() {
         return id;
     }
