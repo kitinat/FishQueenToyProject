@@ -27,6 +27,7 @@ color: white;
 body {
     background-color: #ffffff;
     border-bottom: 1em solid #001489;
+    min-height : 1024px
 }
 
 .breadcrumb-item.active {
