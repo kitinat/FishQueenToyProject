@@ -61,12 +61,12 @@
 
     function renderProduct(searchResult,id,product_name,price,availability) {
 
-        var card  = "<div class='card col-sm-2' style='display:inline-grid;'' >";
+        var card  = "<div class='card col-sm-2 zeropadding' style='display:inline-grid;'' >";
             card += "<img class='card-img-top' src='img/"+id+".png' alt='Card image cap'>";
             card += "<div class='card-body'>";
             card += "<h5 class='card-title' id='productName'>"+product_name+"</h5>";
             card += "<p class='card-text' id='productDetail'>"+price+" ฿ ("+availability+")</p>";
-            card += "<a href='product_detail/"+price+"' class='btn btn-chelsea float-right'>Product Detail</a>";
+            card += "<a href='product_detail/"+price+"' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
             card += "</div>";
             card += "</div>";
 
