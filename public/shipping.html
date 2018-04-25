@@ -15,7 +15,25 @@
     <!-- Custom styles for this template -->
     <link href="main.css" rel="stylesheet">
     <link href="shipping.css" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="bootstrap-4.0.0/js/jquery-3.3.1.min.js" ></script>
 </head>
+        <script>
+            $(document).ready(function(){
+
+                $("#confirm").click(function(){
+                    alert ($("#fullname").val()+""+$("#email").val());
+                    $.ajax({
+                        type: 'POST',
+                        url: 'thankyou.html',
+                        data: '{"name":"jonas"}',
+                        success: function(data) { alert('data: ' + data); },
+                        contentType: "application/json",
+                        dataType: 'json'
+                    });
+                });
+            });
+        </script>
 
 <body>
     <!-- The form -->
@@ -49,47 +67,46 @@
                 </div>
             <form class="was-validated" novalidate="">
                 <div class="form-group">
-                    <label for="toy_name">Full Name</label>
-                    <input type="text" class="form-control" id="toy_name" placeholder="Full Name" required="true">
-                    <div class="invalid-feedback">Required</div>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="toy_email">E-Mail</label>
-                    <input type="email" data-fv-emailaddress-message="The value is not a valid email address" class="form-control" id="toy_email" placeholder="abc@xyz.com" required="true">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" placeholder="Full Name" required="true">
                     <div class="invalid-feedback">Required</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="toy_address1">Address 1</label>
-                    <input type="text" class="form-control" id="toy_address1" placeholder="1234 Main St" required="true">
+                    <label for="email">E-Mail</label>
+                    <input type="email" data-fv-emailaddress-message="The value is not a valid email address" class="form-control" id="email" placeholder="abc@xyz.com" required="true">
+                    <div class="invalid-feedback">Required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address1">Address 1</label>
+                    <input type="text" class="form-control" id="address1" placeholder="1234 Main St" required="true">
                     <div class="invalid-feedback">Required</div>
                 </div>
                 <div class="form-group">
-                    <label for="toy_address2">Address 2</label>
-                    <input type="text" class="form-control" id="toy_address2" placeholder="Apartment, studio, or floor" required="true">
+                    <label for="address2">Address 2</label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor" required="true">
                     <div class="invalid-feedback">Required</div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="toy_city">City</label>
-                        <input type="text" class="form-control" id="toy_city" placeholder="Thailand" required="true">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="Thailand" required="true">
                         <div class="invalid-feedback">Required</div>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="toy_province">Province</label>
-                        <input type="text" class="form-control" id="toy_province" placeholder="Bangkok" required="true">
+                        <label for="province">Province</label>
+                        <input type="text" class="form-control" id="province" placeholder="Bangkok" required="true">
                         <div class="invalid-feedback">Required</div>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="toy_postcode">Post Code</label>
-                        <input type="text" class="form-control" id="toy_postcode" placeholder="12345" required="true">
+                        <label for="post_code">Post Code</label>
+                        <input type="text" class="form-control" id="post_code" placeholder="12345" required="true">
                         <div class="invalid-feedback">Required</div>
                     </div>
                 </div>
                 <div style = "padding:10px; margin-bottom:10px" align="center">
-                    <button type="button" id="btn_add_cart"class="col-sm-4 btn btn-chelsea" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" id="btn_add_cart" class="col-sm-4 btn btn-chelsea" data-toggle="modal" data-target="#exampleModal">
                         Deliver to this address <i class="material-icons">local_shipping</i>
                     </button>
                 </div>
@@ -110,11 +127,6 @@
         <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <!--===============================================================================================-->
         <script src="js/main.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#emailAddressHtml5Form').formValidation();
-            });
-        </script>
 
 
 
@@ -141,7 +153,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-chelsea">Confirm</button>
+                    <button type="button" class="btn btn-chelsea" id="confirm">Confirm</button>
                 </div>
             </div>
         </div>

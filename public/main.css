@@ -67,3 +67,25 @@ a:hover {
 .material-icons{
   vertical-align: middle;
 }
+
+
+
+.card-img-top{
+    height: 280px;
+}
+.card-body{
+height: 200px;
+    text-align: left;
+
+}
+.bottom{
+    position:absolute;
+bottom: 20px;
+    right: 25px;
+}
+
+.zeropadding{
+padding-right :0px;
+padding-left : 0px;
+
+}
