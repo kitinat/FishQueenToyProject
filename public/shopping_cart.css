@@ -1,0 +1,44 @@
+a{
+    font-weight: normal;
+}
+.shopping-header
+{
+    max-width: 1000px;
+}
+.instock
+{
+    color: #13dc13;
+}
+.outstock
+{
+    color: red;
+}
+.product_name
+{
+    font-size: 20px;
+}
+.production_criteria
+{
+    font-size: 18px;
+}
+.subtotal
+{
+    font-size :22px;
+    font-weight: bold;
+}
+.summary_section
+{
+    float: left;
+    width: 100%;
+}
+.left-col
+{
+    float: left;
+    width: 50%;
+}
+.right-col
+{
+    float: left;
+    width: 50%;
+    text-align: right;
+}

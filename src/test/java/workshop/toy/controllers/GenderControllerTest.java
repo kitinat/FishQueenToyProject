@@ -38,7 +38,7 @@ public class GenderControllerTest {
                 .willReturn(gender);
 
         ResponseEntity<List> response
-                = restTemplate.getForEntity("/gender", List.class);
+                = restTemplate.getForEntity("/rest/gender", List.class);
 
         assertEquals(200, response.getStatusCode().value());
         assertEquals(2, response.getBody().size());
