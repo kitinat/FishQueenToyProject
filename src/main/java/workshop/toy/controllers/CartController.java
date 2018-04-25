@@ -47,13 +47,13 @@ public class CartController {
         return cart;
     }
 
-    /*@GetMapping("/cart/{id}")
+    @GetMapping("/cart/{id}")
     public Cart getCartDetail(@PathVariable String id) {
         return manageCart.getCartMap().get(id);
     }
 
-    @PostMapping("/cart/{id}/{productId}/{qty}")
-    public Cart updateCart(@PathVariable String id, String productId, int qty) {
+    @GetMapping("/cart/{id}/{productId}/{qty}")
+    public Cart updateCart(@PathVariable String id,@PathVariable String productId,@PathVariable int qty) {
         Cart cart = manageCart.getCartMap().get(id);
 
         if(qty == 0){
@@ -64,5 +64,5 @@ public class CartController {
         }
 
         return cart;
-    }*/
+    }
 }

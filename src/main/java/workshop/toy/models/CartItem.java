@@ -7,6 +7,20 @@ public class CartItem {
     private String age_name;
     private double price;
     private String availability;
+
+    public CartItem(){
+
+    }
+    public CartItem(String product_id, String product_name, String brand_name, String age_name, double price, String availability, int qty) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.brand_name = brand_name;
+        this.age_name = age_name;
+        this.price = price;
+        this.availability = availability;
+        this.qty = qty;
+    }
+
     private int qty;
 
     public String getProduct_id() {
