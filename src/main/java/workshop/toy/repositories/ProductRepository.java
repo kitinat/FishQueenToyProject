@@ -19,4 +19,12 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
             " ORDER BY PRODUCT_NAME;")
     List<Product> search(@Param("ageId") String ageId,@Param("genderId")  String genderId);
 
+    @Query("SELECT PRODUCT.ID, PRODUCT_NAME, GENDER_ID, AGE_ID, BRAND_ID, PRICE, QTY, GENDER_NAME, AGE_NAME, BRAND_NAME,\n" +
+            " CASE WHEN QTY > 0 THEN 'In Stock' ELSE 'Out of Stock' END AVAILABILITY\n" +
+            " FROM PRODUCT LEFT JOIN GENDER ON PRODUCT.GENDER_ID=GENDER.ID\n" +
+            " LEFT JOIN AGE ON PRODUCT.AGE_ID = AGE.ID\n" +
+            " LEFT JOIN BRAND ON PRODUCT.BRAND_ID = BRAND.ID\n" +
+            " WHERE ID=:id")
+    Product getProductById(@Param("id") int id);
+
 }

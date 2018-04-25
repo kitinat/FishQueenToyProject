@@ -30,7 +30,7 @@ public class ProductControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void success() throws Exception {
+    public void successSearch() throws Exception {
         Product a1 = new Product(1, "Test1", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
         Product a2 = new Product(2, "Test2", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
         List<Product> products = new ArrayList<>();
@@ -44,5 +44,29 @@ public class ProductControllerTest {
 
         assertEquals(200, response.getStatusCode().value());
         assertEquals(2, response.getBody().size());
+    }
+
+
+    @Test
+    public void successGetProductDetail() throws Exception {
+        Product product = new Product(1, "Test1", 2, 3, 4, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
+        given(productRepository.getProductById(1))
+                .willReturn(product);
+
+        ResponseEntity<Product> response
+                = restTemplate.getForEntity("/rest/product/1", Product.class);
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(1, response.getBody().getId());
+        assertEquals("Test1", response.getBody().getProduct_name());
+        assertEquals(2, response.getBody().getGender_id());
+        assertEquals(3, response.getBody().getAge_id());
+        assertEquals(4, response.getBody().getBrand_id());
+        assertEquals(20.00, response.getBody().getPrice(),2);
+        assertEquals(10, response.getBody().getQty());
+        assertEquals("Neutral", response.getBody().getGender_name());
+        assertEquals("Baby", response.getBody().getAge_name());
+        assertEquals("CoolKidz", response.getBody().getBrand_name());
+        assertEquals("In Stock", response.getBody().getAvailability());
     }
 }
