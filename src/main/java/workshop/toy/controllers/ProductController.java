@@ -27,4 +27,6 @@ public class ProductController {
     public Product getProductDetail(@PathVariable int productId) {
         return productRepository.getProductById(productId);
     }
+
+
 }

@@ -15,7 +15,10 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
             " LEFT JOIN AGE ON PRODUCT.AGE_ID = AGE.ID\n" +
             " LEFT JOIN BRAND ON PRODUCT.BRAND_ID = BRAND.ID\n" +
             " WHERE CASE WHEN :ageId = 'all' THEN TRUE ELSE AGE_ID=:ageId END\n" +
-            " AND CASE WHEN :genderId = 'all' THEN TRUE ELSE GENDER_ID=:genderId END\n" +
+            " AND CASE WHEN :genderId = 'all' THEN TRUE\n" +
+            " WHEN :genderId = '2' THEN GENDER_ID IN (1,2)\n" +
+            " WHEN :genderId = '3' THEN GENDER_ID IN (1,3)\n" +
+            " ELSE GENDER_ID=:genderId END\n" +
             " ORDER BY PRODUCT_NAME;")
     List<Product> search(@Param("ageId") String ageId,@Param("genderId")  String genderId);
 
