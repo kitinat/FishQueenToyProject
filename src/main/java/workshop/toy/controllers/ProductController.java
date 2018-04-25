@@ -22,4 +22,9 @@ public class ProductController {
         System.out.println(ageId+","+genderId);
         return productRepository.search(ageId,genderId);
     }
+
+    @GetMapping("/product/{productId}")
+    public Product getProductDetail(@PathVariable int productId) {
+        return productRepository.getProductById(productId);
+    }
 }
