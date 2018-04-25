@@ -19,12 +19,30 @@
                     });
                 });
     }
-    function getProductLen(){
-                $.getJSON("rest/product/1/all", function (data) {
+    function getProductInit(){
+                var age = "all";
+                var gender = "all";
+                $.getJSON("rest/product/"+age+"/"+gender, function (data) {
                 $( "#searchResult" ).text(data.length+" Toy Found");
                 });
 
     }
+    function getProduct(age,gender){
+
+                $.getJSON("rest/product/"+age+"/"+gender, function (data) {
+                $( "#searchResult" ).text(data.length+" Toy Found");
+                });
+
+    }
+
+
+    $( "#btnSearch" ).click(function() {
+                var age = $( "#age" ).val();
+                var gender =$( "#gender" ).val();
+                getProduct(age,gender);
+    });//end change qty
+
     getAge();
     getGender();
-    getProductLen();
+    getProductInit();
+
