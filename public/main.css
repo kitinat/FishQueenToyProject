@@ -13,14 +13,20 @@ color: white;
 .card-header {
     padding: .75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #011489;
+    background-color: #001489;
     border-bottom: 1px solid rgb(255, 255, 255);
     color: white;
+
+}
+
+.card-body {
+        border-bottom: .75rem solid #001489;
 }
 
 
 body {
     background-color: #ffffff;
+    border-bottom: 1em solid #001489;
 }
 
 .breadcrumb-item.active {
@@ -35,7 +41,9 @@ body {
 .a-white {
     color: #d0d0d0;
 }
-
+a:hover {
+    color: #d0d0d0;
+}
 .card-body{
     background: #f1f1f1;}
 
@@ -51,5 +59,10 @@ body {
 }
 
 .container {
-  max-width: 80%;
+  max-width: 90%;
+}
+
+
+.material-icons{
+  vertical-align: middle;
 }
