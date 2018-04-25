@@ -38,7 +38,7 @@ public class AgeControllerTest {
                 .willReturn(ages);
 
         ResponseEntity<List> response
-                = restTemplate.getForEntity("/age", List.class);
+                = restTemplate.getForEntity("/rest/age", List.class);
 
         assertEquals(200, response.getStatusCode().value());
         assertEquals(2, response.getBody().size());
