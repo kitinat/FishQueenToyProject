@@ -31,6 +31,17 @@
     </div>
 
 <div class="container">
+
+    <div class="text-left">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a class="a-white" href="#">Home</a></li>
+                <li class="breadcrumb-item "><a class="a-white" href="#">Shopping cart</a></li>
+                <li class="breadcrumb-item text-white" aria-current="page">Shipping</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="card-deck mb-12">
         <div class="card mb-12 box-shadow">
                 <div class="card-header">
@@ -67,8 +78,8 @@
                     </div>
                 </div>
                 <div style = "padding:10px; margin-bottom:10px" align="center">
-                    <button type="submit" class="btn btn-chelsea">
-                        Deliver to this address
+                    <button type="button" id="btn_add_cart"class="col-sm-4 btn btn-chelsea" data-toggle="modal" data-target="#exampleModal">
+                        Deliver to this address <i class="material-icons">local_shipping</i>
                     </button>
                 </div>
         </div>
@@ -85,17 +96,6 @@
         <script src="vendor/select2/select2.min.js"></script>
         <!--===============================================================================================-->
         <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script>
-		$('.js-pscroll').each(function(){
-			var ps = new PerfectScrollbar(this);
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-
-
-	</script>
         <!--===============================================================================================-->
         <script src="js/main.js"></script>
 
@@ -115,6 +115,21 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Do you confirm to deliver all of products to your address?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-chelsea">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
@@ -125,6 +140,7 @@
 <script src="bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',
