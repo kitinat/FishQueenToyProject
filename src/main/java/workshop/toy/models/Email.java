@@ -1,4 +1,4 @@
-package workshop.toy.controllers;
+package workshop.toy.models;
 
 
 import java.util.*;
@@ -8,9 +8,9 @@ import javax.activation.*;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-public class EmailController {
+public class Email {
 
-    public EmailController(){
+    public Email(){
 
     }
     public static void sendEmail(String toEmail,String orderId,String emailContent)
