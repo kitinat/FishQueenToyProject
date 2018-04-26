@@ -1,5 +1,6 @@
 package workshop.toy.repositories;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -27,7 +28,14 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
             " FROM PRODUCT LEFT JOIN GENDER ON PRODUCT.GENDER_ID=GENDER.ID\n" +
             " LEFT JOIN AGE ON PRODUCT.AGE_ID = AGE.ID\n" +
             " LEFT JOIN BRAND ON PRODUCT.BRAND_ID = BRAND.ID\n" +
-            " WHERE ID=:id")
+            " WHERE PRODUCT.ID=:id")
     Product getProductById(@Param("id") int id);
+
+    @Query("SELECT QTY FROM PRODUCT WHERE ID=:id")
+    int getStockQtyById(@Param("id") int id);
+
+    @Modifying
+    @Query("UPDATE PRODUCT SET QTY=:qty WHERE ID=:id")
+    void updateStockQty(@Param("id") int id, @Param("qty") int qty);
 
 }

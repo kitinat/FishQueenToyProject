@@ -1,4 +1,4 @@
-package workshop.toy.controllers;
+package workshop.toy.models;
 
 import org.springframework.stereotype.Component;
 import workshop.toy.models.Cart;
@@ -17,4 +17,8 @@ public class ManageCart {
     public void setCartMap(Map<String, Cart> cartMap) {
         this.cartMap = cartMap;
     }
+
+    public Cart getCart(String id){ return this.cartMap.get(id); }
+
+    public void putCart(String id, Cart cart){ this.cartMap.put(id, cart); };
 }
