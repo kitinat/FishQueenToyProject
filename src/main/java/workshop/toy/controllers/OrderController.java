@@ -92,7 +92,8 @@ public class OrderController {
         String subject = "Confirm Order ID : "+orderH.getId();
         StringBuffer content = new StringBuffer();
 
-        content.append("Order ID : ").append(orderH.getId()).append("\n\n");
+        content.append("Order ID : ").append(orderH.getId()).append("\n");
+        content.append("Order Date : ").append(orderH.getOrderDate()).append("\n\n");
         Cart cart = manageCart.getCart(cartId);
         int no = 1;
         BigDecimal totalPrice = new BigDecimal("0");
@@ -100,10 +101,10 @@ public class OrderController {
             CartItem item = entry.getValue();
             content.append("Item ").append(no++).append(" : \n");
             content.append("Product Name : ").append(item.getProduct_name()).append("\n");
-            content.append("Price : ").append(item.getPrice()).append("\n");
+            content.append("Unit Price : ").append(item.getPrice()).append("\n");
             content.append("Qty : ").append(item.getQty()).append("\n\n");
 
-            totalPrice.add(new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(item.getQty())).setScale(2, RoundingMode.HALF_UP));
+            totalPrice = totalPrice.add(new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(item.getQty())).setScale(2, RoundingMode.HALF_UP));
         }
 
         content.append("Total price : ").append(totalPrice.doubleValue());
