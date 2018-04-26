@@ -44,10 +44,9 @@ public class OrderController {
         return isAvailable;
     }
 
-    @PostMapping("/stock/cart/{cartId}")
+    @GetMapping("/stock/cart/{cartId}")
     public Cart updateCartWithCurrentStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
-        String isAvailable = "Y";
         for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
@@ -61,7 +60,7 @@ public class OrderController {
         return cart;
     }
 
-    @PostMapping("/stock/product/{cartId}")
+    @GetMapping("/stock/product/{cartId}")
     public void updateStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
         for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){

@@ -65,7 +65,7 @@ public class CartController {
         return cart;
     }
 
-    @PostMapping("/cart/deletion/{id}")
+    @GetMapping("/cart/deletion/{id}")
     public void deleteCart(@PathVariable String id) {
         manageCart.removeCart(id);
     }
