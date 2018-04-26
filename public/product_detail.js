@@ -1,7 +1,6 @@
     $( document ).ready(function() {
-         $.post("index.html", function( data ) {
-              alert(data);
-            });
+         var a = sessionStorage.getItem("sent_pid");
+             alert(a);
         });
 
     var toy_name = "43 Peices Dinner Set";
