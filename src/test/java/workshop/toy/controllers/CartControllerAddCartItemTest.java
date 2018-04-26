@@ -3,6 +3,7 @@ package workshop.toy.controllers;
 import org.junit.Test;
 import workshop.toy.models.Cart;
 import workshop.toy.models.CartItem;
+import workshop.toy.models.ManageCart;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

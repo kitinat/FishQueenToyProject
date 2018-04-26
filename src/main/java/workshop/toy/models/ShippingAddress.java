@@ -1,13 +1,8 @@
 package workshop.toy.models;
 
-import org.springframework.data.annotation.Id;
+public class ShippingAddress {
 
-import java.sql.Timestamp;
-
-public class OrderH {
-    @Id
-    private int id;
-    private Timestamp orderDate;
+    private String cartId;
     private String fullname;
     private String address1;
     private String address2;
@@ -16,20 +11,12 @@ public class OrderH {
     private String postcode;
     private String email;
 
-    public int getId() {
-        return id;
+    public String getCartId() {
+        return cartId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Timestamp getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Timestamp orderDate) {
-        this.orderDate = orderDate;
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
     }
 
     public String getFullname() {

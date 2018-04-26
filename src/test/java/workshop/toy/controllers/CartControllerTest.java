@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import workshop.toy.models.Cart;
 import workshop.toy.models.CartItem;
+import workshop.toy.models.ManageCart;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,7 +43,7 @@ public class CartControllerTest {
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
         cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.getCartMap().put(cart.getId(),cart);
+        manageCart.putCart(cart.getId(),cart);
 
         ResponseEntity<Cart> response
                 = restTemplate.getForEntity("/rest/cart/111", Cart.class);
@@ -60,7 +61,7 @@ public class CartControllerTest {
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
         cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.getCartMap().put(cart.getId(),cart);
+        manageCart.putCart(cart.getId(),cart);
 
         ResponseEntity<Cart> response
                 = restTemplate.getForEntity("/rest/cart/111/1/0",Cart.class);
@@ -78,7 +79,7 @@ public class CartControllerTest {
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
         cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.getCartMap().put(cart.getId(),cart);
+        manageCart.putCart(cart.getId(),cart);
 
         ResponseEntity<Cart> response
                 = restTemplate.getForEntity("/rest/cart/111/1/3",Cart.class);

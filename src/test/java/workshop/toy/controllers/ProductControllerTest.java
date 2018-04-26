@@ -31,11 +31,9 @@ public class ProductControllerTest {
 
     @Test
     public void successSearch() throws Exception {
-        Product a1 = new Product(1, "Test1", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
-        Product a2 = new Product(2, "Test2", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
         List<Product> products = new ArrayList<>();
-        products.add(a1);
-        products.add(a2);
+        products.add(new Product(1, "Test1", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock"));
+        products.add(new Product(2, "Test2", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock"));
         given(productRepository.search("all","all"))
                 .willReturn(products);
 

@@ -7,6 +7,7 @@ public class CartItem {
     private String age_name;
     private double price;
     private String availability;
+    private int qty;
 
     public CartItem(){
 
@@ -21,7 +22,6 @@ public class CartItem {
         this.qty = qty;
     }
 
-    private int qty;
 
     public String getProduct_id() {
         return product_id;

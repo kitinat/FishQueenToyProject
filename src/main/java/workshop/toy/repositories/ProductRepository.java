@@ -30,4 +30,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
             " WHERE ID=:id")
     Product getProductById(@Param("id") int id);
 
+    @Query("SELECT QTY FROM PRODUCT WHERE ID=:id")
+    int getStockQtyById(@Param("id") int id);
+
 }

@@ -1,11 +1,10 @@
 package workshop.toy.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import workshop.toy.models.Cart;
 import workshop.toy.models.CartItem;
+import workshop.toy.models.ManageCart;
 
 import java.util.UUID;
 
@@ -30,7 +29,7 @@ public class CartController {
     }
 
     public Cart addCartItem(String id, CartItem cartItem) {
-        Cart cart = manageCart.getCartMap().get(id);
+        Cart cart = manageCart.getCart(id);
 
         if (cart == null) {
             cart = new Cart();
@@ -43,18 +42,18 @@ public class CartController {
             cart.getItems().put(cartItem.getProduct_id(), cartItem);
         }
 
-        manageCart.getCartMap().put(cart.getId(), cart);
+        manageCart.putCart(cart.getId(), cart);
         return cart;
     }
 
     @GetMapping("/cart/{id}")
     public Cart getCartDetail(@PathVariable String id) {
-        return manageCart.getCartMap().get(id);
+        return manageCart.getCart(id);
     }
 
     @GetMapping("/cart/{id}/{productId}/{qty}")
     public Cart updateCart(@PathVariable String id,@PathVariable String productId,@PathVariable int qty) {
-        Cart cart = manageCart.getCartMap().get(id);
+        Cart cart = manageCart.getCart(id);
 
         if(qty == 0){
             cart.getItems().remove(productId);

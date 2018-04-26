@@ -29,11 +29,9 @@ public class AgeControllerTest {
 
     @Test
     public void success() throws Exception {
-        Age a1 = new Age(1, "Test1");
-        Age a2 = new Age(2, "Test2");
         List<Age> ages = new ArrayList<>();
-        ages.add(a1);
-        ages.add(a2);
+        ages.add(new Age(1, "Test1"));
+        ages.add(new Age(2, "Test2"));
         given(ageRepository.getAgeList())
                 .willReturn(ages);
 

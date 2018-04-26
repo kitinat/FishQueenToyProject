@@ -29,11 +29,9 @@ public class GenderControllerTest {
 
     @Test
     public void success() throws Exception {
-        Gender gen1 = new Gender(1, "Test1");
-        Gender gen2 = new Gender(2, "Test2");
         List<Gender> gender = new ArrayList<>();
-        gender.add(gen1);
-        gender.add(gen2);
+        gender.add(new Gender(1, "Test1"));
+        gender.add(new Gender(2, "Test2"));
         given(genderRepository.getGenderList())
                 .willReturn(gender);
 
