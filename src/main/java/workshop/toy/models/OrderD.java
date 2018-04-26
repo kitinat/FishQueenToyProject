@@ -1,18 +1,37 @@
 package workshop.toy.models;
 
-public class OrderD {
-    private int id;
-    private int order_h_id;
-    private int product_id;
-    private int qty;
-    private double unit_price;
+import org.springframework.data.annotation.Id;
 
-    public double getUnit_price() {
-        return unit_price;
+public class OrderD {
+    @Id
+    private int id;
+    private int orderHId;
+    private int productId;
+    private int qty;
+    private double unitPrice;
+
+    public int getId() {
+        return id;
     }
 
-    public void setUnit_price(double unit_price) {
-        this.unit_price = unit_price;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrderHId() {
+        return orderHId;
+    }
+
+    public void setOrderHId(int orderHId) {
+        this.orderHId = orderHId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getQty() {
@@ -23,27 +42,11 @@ public class OrderD {
         this.qty = qty;
     }
 
-    public int getId() {
-        return id;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getOrder_h_id() {
-        return order_h_id;
-    }
-
-    public void setOrder_h_id(int order_h_id) {
-        this.order_h_id = order_h_id;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }

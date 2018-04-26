@@ -21,4 +21,6 @@ public class ManageCart {
     public Cart getCart(String id){ return this.cartMap.get(id); }
 
     public void putCart(String id, Cart cart){ this.cartMap.put(id, cart); };
+
+    public void removeCart(String id) {this.cartMap.remove(id); }
 }

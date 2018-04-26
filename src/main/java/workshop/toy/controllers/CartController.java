@@ -36,7 +36,7 @@ public class CartController {
             cart.setId(UUID.randomUUID().toString());
         }
         CartItem item = cart.getItems().get(cartItem.getProduct_id());
-        if(item != null){
+        if (item != null) {
             item.setQty(cartItem.getQty() + item.getQty());
         } else {
             cart.getItems().put(cartItem.getProduct_id(), cartItem);
@@ -52,16 +52,21 @@ public class CartController {
     }
 
     @GetMapping("/cart/{id}/{productId}/{qty}")
-    public Cart updateCart(@PathVariable String id,@PathVariable String productId,@PathVariable int qty) {
+    public Cart updateCart(@PathVariable String id, @PathVariable String productId, @PathVariable int qty) {
         Cart cart = manageCart.getCart(id);
 
-        if(qty == 0){
+        if (qty == 0) {
             cart.getItems().remove(productId);
-        }else{
+        } else {
             CartItem item = cart.getItems().get(productId);
             item.setQty(qty);
         }
 
         return cart;
+    }
+
+    @PostMapping("/cart/deletion/{id}")
+    public void deleteCart(@PathVariable String id) {
+        manageCart.removeCart(id);
     }
 }

@@ -41,9 +41,9 @@ public class CartControllerTest {
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
-        cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
-        cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.putCart(cart.getId(),cart);
+        cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
+        cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
+        manageCart.putCart(cart.getId(), cart);
 
         ResponseEntity<Cart> response
                 = restTemplate.getForEntity("/rest/cart/111", Cart.class);
@@ -59,12 +59,12 @@ public class CartControllerTest {
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
-        cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
-        cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.putCart(cart.getId(),cart);
+        cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
+        cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
+        manageCart.putCart(cart.getId(), cart);
 
         ResponseEntity<Cart> response
-                = restTemplate.getForEntity("/rest/cart/111/1/0",Cart.class);
+                = restTemplate.getForEntity("/rest/cart/111/1/0", Cart.class);
 
         assertEquals(200, response.getStatusCode().value());
         assertEquals("111", response.getBody().getId());
@@ -77,16 +77,30 @@ public class CartControllerTest {
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
-        cart.getItems().put(cartItem1.getProduct_id(),cartItem1);
-        cart.getItems().put(cartItem2.getProduct_id(),cartItem2);
-        manageCart.putCart(cart.getId(),cart);
+        cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
+        cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
+        manageCart.putCart(cart.getId(), cart);
 
         ResponseEntity<Cart> response
-                = restTemplate.getForEntity("/rest/cart/111/1/3",Cart.class);
+                = restTemplate.getForEntity("/rest/cart/111/1/3", Cart.class);
 
         assertEquals(200, response.getStatusCode().value());
         assertEquals("111", response.getBody().getId());
         assertEquals(2, response.getBody().getItems().size());
         assertEquals(3, response.getBody().getItems().get("1").getQty());
     }
+
+    /*@Test
+    public void deleteCart() {
+        Cart cart = new Cart();
+        cart.setId("111");
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
+        cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
+        manageCart.putCart(cart.getId(), cart);
+
+        ResponseEntity<Cart> response
+                = restTemplate.getForEntity("/rest/cart/deletion/111", Cart.class);
+    }*/
 }
