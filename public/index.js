@@ -37,7 +37,7 @@
     function getProduct(age,gender){
 
                 $.getJSON("rest/product/"+age+"/"+gender, function (data) {
-                $( "#searchResult" ).text(data.length+" Toy Found");
+                $( "#searchResult" ).text(data.length+" Items Found");
                 $("#searchResultArea").empty();
                 $.each(data, function (index, value) {
                 renderProduct(data.length,value.id,value.product_name,value.price,value.availability);
