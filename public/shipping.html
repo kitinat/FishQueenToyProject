@@ -26,11 +26,12 @@
                     $.ajax({
                         type: 'POST',
                         url: 'thankyou.html',
-                        data: '{"name":"jonas"}',
+                        data: $("#email").val(),
                         success: function(data) { alert('data: ' + data); },
                         contentType: "application/json",
                         dataType: 'json'
                     });
+                    window.open("thankyou.html","_self");
                 });
             });
         </script>
