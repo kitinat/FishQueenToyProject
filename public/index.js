@@ -24,7 +24,7 @@
                 var age = "all";
                 var gender = "all";
                 $.getJSON("rest/product/"+age+"/"+gender, function (data) {
-                $( "#searchResult" ).text(data.length+" Toy Found");
+                $( "#searchResult" ).text(data.length+" Items Found");
                 $.each(data, function (index, value) {
                 renderProduct(data.length,value.id,value.product_name,value.price,value.availability);
                 });
