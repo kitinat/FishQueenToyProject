@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="https://image.flaticon.com/icons/png/128/811/811643.png">
 
     <title>Shopping Cart</title>
 
@@ -32,18 +32,19 @@
     <a class="btn btn-outline-white " href="checkout.html">Checkout</a>
 </div>
 
-<div class="shopping-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-left">
-    <h1 class="display-6">Shopping Cart</h1>
-</div>
-
 <div class="container">
-    <div class="cart_detail">
+    <div class="card-deck mb-12">
+        <div class="card mb-12 box-shadow">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Shopping Cart</h4>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
                 <th scope="col">Item</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Price (THB)</th>
+                <th scope="col">Price/Unit (THB)</th>
+                <th scope="col">Amount (THB)</th>
             </tr>
             </thead>
             <tbody id="cart_detail">
@@ -59,52 +60,60 @@
             </div>
             <div class="right-col">
                 <div class="subtotal">Subtotal (2 items) :
-                    <span style="color:red;"> 200.00 </span>THB
+                    <span id="subtotal" style="color:red;"> 200.00 </span>THB
                 </div>
                 <div class="subtotal">Ship Fee: <span style="color:red;">50.00</span> THB</div>
             </div>
         </div>
+        </div>
+    </div>
+    <div class="process_section">
+        <button type="button" id="btn_process"class="col-sm-4 btn btn-chelsea" data-toggle="modal" data-target="#processModal">
+            Process to checkout
+        </button>
     </div>
     <div style="clear:both"></div>
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <footer class="container container-footer">
         <div class="row">
             <div class="col-12 col-md">
-                <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+                <img class="mb-2" src="https://image.flaticon.com/icons/png/128/811/811643.png" alt="" width="24" height="24">
+                <small class="mb-3 text-muted">&copy; 2018 Toy R Not Us  Powered by FishQueen !</small>
             </div>
-            <div class="col-6 col-md">
-                <h5>Features</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Cool stuff</a></li>
-                    <li><a class="text-muted" href="#">Random feature</a></li>
-                    <li><a class="text-muted" href="#">Team feature</a></li>
-                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                    <li><a class="text-muted" href="#">Another one</a></li>
-                    <li><a class="text-muted" href="#">Last time</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Resources</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Resource</a></li>
-                    <li><a class="text-muted" href="#">Resource name</a></li>
-                    <li><a class="text-muted" href="#">Another resource</a></li>
-                    <li><a class="text-muted" href="#">Final resource</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>About</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-                    <li><a class="text-muted" href="#">Locations</a></li>
-                    <li><a class="text-muted" href="#">Privacy</a></li>
-                    <li><a class="text-muted" href="#">Terms</a></li>
-                </ul>
-            </div>
+
         </div>
     </footer>
+    <!-- Modal Delete-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Do you delete this product ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-chelsea">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Process-->
+    <div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Do you want to confirm ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-chelsea">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="label_footer"></div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -113,6 +122,7 @@
 <script src="bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',

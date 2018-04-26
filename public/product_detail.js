@@ -1,3 +1,8 @@
+    $( document ).ready(function() {
+         $.post("index.html", function( data ) {
+              alert(data);
+            });
+        });
 
     var toy_name = "43 Peices Dinner Set";
     var toy_qty  = "1";
@@ -5,7 +10,7 @@
     var label_unit = "item";
     var toy_brand = "CoolKidz";
     var toy_gender = "Female";
-    var toy_age = "3-5";
+    var toy_age = "3-5-8";
     var toy_price =12.95;
     var toy_shipping ="Cash On Delivery";
     var toy_status ="In Stock"+" ( "+toy_qty_stock+" )";
