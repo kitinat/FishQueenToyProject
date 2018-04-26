@@ -90,17 +90,26 @@ public class CartControllerTest {
         assertEquals(3, response.getBody().getItems().get("1").getQty());
     }
 
-    /*@Test
+    @Test
     public void deleteCart() {
-        Cart cart = new Cart();
-        cart.setId("111");
+        Cart cart1 = new Cart();
+        cart1.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
         CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
-        cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
-        cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
-        manageCart.putCart(cart.getId(), cart);
+        cart1.getItems().put(cartItem1.getProduct_id(), cartItem1);
+        cart1.getItems().put(cartItem2.getProduct_id(), cartItem2);
+        manageCart.putCart(cart1.getId(), cart1);
+        Cart cart2 = new Cart();
+        cart2.setId("222");
+        CartItem cartItem3 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 5);
+        cart2.getItems().put(cartItem3.getProduct_id(), cartItem3);
+        manageCart.putCart(cart2.getId(), cart2);
 
-        ResponseEntity<Cart> response
-                = restTemplate.getForEntity("/rest/cart/deletion/111", Cart.class);
-    }*/
+        ResponseEntity<Object> response
+            = restTemplate.getForEntity("/rest/cart/deletion/111", Object.class);
+
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(1, manageCart.getCartMap().size());
+
+    }
 }

@@ -6,7 +6,10 @@ import workshop.toy.models.*;
 import workshop.toy.repositories.OrderDRepository;
 import workshop.toy.repositories.OrderHRepository;
 import workshop.toy.repositories.ProductRepository;
+import workshop.toy.util.EmailUtil;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Map;
@@ -41,10 +44,9 @@ public class OrderController {
         return isAvailable;
     }
 
-    @PostMapping("/stock/cart/{cartId}")
+    @GetMapping("/stock/cart/{cartId}")
     public Cart updateCartWithCurrentStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
-        String isAvailable = "Y";
         for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
@@ -58,7 +60,7 @@ public class OrderController {
         return cart;
     }
 
-    @PostMapping("/stock/product/{cartId}")
+    @GetMapping("/stock/product/{cartId}")
     public void updateStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
         for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
@@ -77,10 +79,33 @@ public class OrderController {
     }
 
     @PostMapping("/orderD")
-    public OrderD createOrderH(@PathVariable OrderD orderD) {
+    public OrderD createOrderD(@PathVariable OrderD orderD) {
         return orderDRepository.save(orderD);
     }
 
+    @PostMapping("/order/email/{cartId}")
+    public void sendMail(@PathVariable String cartId, @RequestBody OrderH orderH) {
+        String emailTo = orderH.getEmail();
+        String subject = "Confirm Order ID : "+orderH.getId();
+        StringBuffer content = new StringBuffer();
 
+        content.append("Order ID : ").append(orderH.getId()).append("\n\n");
+        Cart cart = manageCart.getCart(cartId);
+        int no = 1;
+        BigDecimal totalPrice = new BigDecimal("0");
+        for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
+            CartItem item = entry.getValue();
+            content.append("Item ").append(no++).append(" : \n");
+            content.append("Product Name : ").append(item.getProduct_name()).append("\n");
+            content.append("Price : ").append(item.getPrice()).append("\n");
+            content.append("Qty : ").append(item.getQty()).append("\n\n");
+
+            totalPrice.add(new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(item.getQty())).setScale(2, RoundingMode.HALF_UP));
+        }
+
+        content.append("Total price : ").append(totalPrice.doubleValue());
+
+        EmailUtil.sendEmail(emailTo, subject, content.toString());
+    }
 
 }

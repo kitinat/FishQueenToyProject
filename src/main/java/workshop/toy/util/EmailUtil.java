@@ -1,4 +1,4 @@
-package workshop.toy.models;
+package workshop.toy.util;
 
 
 import java.util.*;
@@ -8,15 +8,15 @@ import javax.activation.*;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-public class Email {
+public class EmailUtil {
 
-    public Email(){
+    public EmailUtil(){
 
     }
-    public static void sendEmail(String toEmail,String orderId,String emailContent)
+    public static void sendEmail(String emailTo,String subject,String content)
     {
         // email ID of Recipient.
-        String recipient = toEmail;
+        String recipient = emailTo;
 
         // email ID of  Sender.
         String sender = "fishqueentoy@gmail.com";
@@ -59,11 +59,11 @@ public class Email {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
             // Set Subject: subject of the email
-            message.setSubject("Confirm OrderID: "+orderId);
+            message.setSubject(subject);
 
             // set body of the email.
             //message.setText("This is a test mail");
-            message.setText(emailContent);
+            message.setText(content);
 
             // Send email.
             Transport.send(message);
