@@ -66,7 +66,8 @@
             card += "<div class='card-body'>";
             card += "<h5 class='card-title' id='productName'>"+product_name+"</h5>";
             card += "<p class='card-text' id='productDetail'>"+price+" ฿ ("+availability+")</p>";
-            card += "<a href='product_detail/"+price+"' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
+            card += "<a href='product_detail.html' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
+            //card += "<a href='product_detail.html/"+price+"' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
             card += "</div>";
             card += "</div>";
 
