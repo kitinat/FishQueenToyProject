@@ -24,7 +24,7 @@
                 var age = "all";
                 var gender = "all";
                 $.getJSON("rest/product/"+age+"/"+gender, function (data) {
-                $( "#searchResult" ).text(data.length+" Toy Found");
+                $( "#searchResult" ).text(data.length+" Items Found");
                 $.each(data, function (index, value) {
                 renderProduct(data.length,value.id,value.product_name,value.price,value.availability);
                 });
@@ -37,7 +37,7 @@
     function getProduct(age,gender){
 
                 $.getJSON("rest/product/"+age+"/"+gender, function (data) {
-                $( "#searchResult" ).text(data.length+" Toy Found");
+                $( "#searchResult" ).text(data.length+" Items Found");
                 $("#searchResultArea").empty();
                 $.each(data, function (index, value) {
                 renderProduct(data.length,value.id,value.product_name,value.price,value.availability);
@@ -66,7 +66,8 @@
             card += "<div class='card-body'>";
             card += "<h5 class='card-title' id='productName'>"+product_name+"</h5>";
             card += "<p class='card-text' id='productDetail'>"+price+" ฿ ("+availability+")</p>";
-            card += "<a href='product_detail/"+price+"' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
+            card += "<a href='product_detail.html' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
+            //card += "<a href='product_detail.html/"+price+"' class='btn btn-chelsea float-right bottom'>Product Detail</a>";
             card += "</div>";
             card += "</div>";
 

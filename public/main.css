@@ -73,11 +73,12 @@ a:hover {
 .card-img-top{
     height: 280px;
 }
+
 .card-body{
-height: 200px;
     text-align: left;
 
 }
+
 .bottom{
     position:absolute;
 bottom: 20px;
