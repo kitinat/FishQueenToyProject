@@ -3,9 +3,6 @@
              alert(a);
         });
 
-
-
-
     var toy_name = "43 Peices Dinner Set";
     var toy_qty  = "1";
     var toy_qty_stock = "10";
