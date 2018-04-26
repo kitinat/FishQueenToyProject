@@ -9,6 +9,8 @@
         sessionStorage.setItem("sent_pid", product_id);
         window.open("product_detail.html","_self");
 
+
+
     };
 
     function getAge(){

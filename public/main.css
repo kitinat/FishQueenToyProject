@@ -1,3 +1,7 @@
+*{
+-webkit-appearance: none !important;
+}
+
 .bg-blue{
 background-color: #001489;
 color: white;
@@ -28,6 +32,7 @@ body {
     background-color: #ffffff;
     border-bottom: 1em solid #001489;
     min-height : 1024px
+
 }
 
 .breadcrumb-item.active {
@@ -49,9 +54,9 @@ a:hover {
     background: #f1f1f1;}
 
 .btn-chelsea {
-    color: #fff;
-    background-color: #011489;
-    border-color: #011489;
+    color: #fff !important;
+    background-color: #011489 !important;
+    border-color: #011489 !important;
 }
 
 .container-footer{
