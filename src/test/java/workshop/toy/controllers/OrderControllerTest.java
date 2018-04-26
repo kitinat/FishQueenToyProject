@@ -8,12 +8,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import workshop.toy.models.Cart;
-import workshop.toy.models.CartItem;
-import workshop.toy.models.ManageCart;
+import workshop.toy.models.*;
 import workshop.toy.repositories.ProductRepository;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
@@ -116,6 +115,22 @@ public class OrderControllerTest {
 
         ResponseEntity<Object> response
                 = restTemplate.getForEntity("/rest/stock/product/111", Object.class);
+
+        assertEquals(200, response.getStatusCode().value());
+    }
+
+    @Test
+    public void successCreateOrderH() throws Exception {
+        ResponseEntity<OrderH> response
+                = restTemplate.postForEntity("/rest/orderH", new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "yuwadeek@gmail.com"), OrderH.class);
+
+        assertEquals(200, response.getStatusCode().value());
+    }
+
+    @Test
+    public void successCreateOrderD() throws Exception {
+        ResponseEntity<OrderD> response
+                = restTemplate.postForEntity("/rest/orderD", new OrderD(1,1,2,119.95), OrderD.class);
 
         assertEquals(200, response.getStatusCode().value());
     }

@@ -16,6 +16,18 @@ public class OrderH {
     private String postcode;
     private String email;
 
+    public OrderH(){}
+
+    public OrderH(String fullname, String address1, String address2, String city, String province, String postcode, String email) {
+        this.fullname = fullname;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.province = province;
+        this.postcode = postcode;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

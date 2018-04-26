@@ -17,7 +17,7 @@ public class CartControllerAddCartItemTest {
         CartItem cartItem = new CartItem();
         cartItem.setProduct_id("1");
         Cart cart = cartController.addCartItem("1", cartItem);
-        assertNotNull(cart.getId());
+        assertNotNull(cart);
         assertEquals(1, cart.getItems().size());
     }
 

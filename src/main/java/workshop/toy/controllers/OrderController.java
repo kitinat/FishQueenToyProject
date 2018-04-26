@@ -67,6 +67,9 @@ public class OrderController {
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
             if(cartItem.getQty() <= stockQty){
+                System.out.println("Product id="+cartItem.getProduct_id());
+                System.out.println("CartItem.Qty="+cartItem.getQty());
+                System.out.println("stockQty="+stockQty);
                productRepository.updateStockQty(Integer.parseInt(cartItem.getProduct_id()), (stockQty-cartItem.getQty()));
             }
         }
@@ -79,7 +82,7 @@ public class OrderController {
     }
 
     @PostMapping("/orderD")
-    public OrderD createOrderD(@PathVariable OrderD orderD) {
+    public OrderD createOrderD(@RequestBody OrderD orderD) {
         return orderDRepository.save(orderD);
     }
 
