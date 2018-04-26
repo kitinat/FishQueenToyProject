@@ -9,10 +9,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import workshop.toy.models.*;
+import workshop.toy.repositories.OrderDRepository;
+import workshop.toy.repositories.OrderHRepository;
 import workshop.toy.repositories.ProductRepository;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
@@ -21,6 +22,10 @@ public class OrderControllerTest {
 
     @MockBean
     private ProductRepository productRepository;
+    @MockBean
+    private OrderHRepository orderHRepository;
+    @MockBean
+    private OrderDRepository orderDRepository;
 
     @Autowired
     private ManageCart manageCart;
@@ -121,16 +126,22 @@ public class OrderControllerTest {
 
     @Test
     public void successCreateOrderH() throws Exception {
+        OrderH orderH = new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "a1@gmail.com");
+        given(orderHRepository.save(orderH)).willReturn(orderH);
+
         ResponseEntity<OrderH> response
-                = restTemplate.postForEntity("/rest/orderH", new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "yuwadeek@gmail.com"), OrderH.class);
+                = restTemplate.postForEntity("/rest/orderH", orderH, OrderH.class);
 
         assertEquals(200, response.getStatusCode().value());
     }
 
     @Test
     public void successCreateOrderD() throws Exception {
+        OrderD orderD = new OrderD(1,1,2,119.95);
+        given(orderDRepository.save(orderD)).willReturn(orderD);
+
         ResponseEntity<OrderD> response
-                = restTemplate.postForEntity("/rest/orderD", new OrderD(1,1,2,119.95), OrderD.class);
+                = restTemplate.postForEntity("/rest/orderD", orderD, OrderD.class);
 
         assertEquals(200, response.getStatusCode().value());
     }
