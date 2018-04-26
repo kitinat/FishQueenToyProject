@@ -24,7 +24,9 @@
 /nbdist/
 /.nb-gradle/
 
-
+UITest/*.html
+UITest/*.png
+UITest/*.xml
 
 
 .DS_Store
