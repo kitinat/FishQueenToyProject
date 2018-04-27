@@ -27,7 +27,7 @@ public class CartControllerTest {
 
     @Test
     public void successAddCart() {
-        CartItem cartItem = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        CartItem cartItem = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 2, 10);
         HttpEntity<CartItem> cartItemHttpEntity = new HttpEntity<>(cartItem);
         ResponseEntity<Cart> response
                 = restTemplate.postForEntity("/rest/cart/111", cartItemHttpEntity, Cart.class);
@@ -39,8 +39,8 @@ public class CartControllerTest {
     public void successGetCartDetail() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 1, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 2, 10);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -57,8 +57,8 @@ public class CartControllerTest {
     public void updateCartByZeroQty() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 1, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 2, 10);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -75,8 +75,8 @@ public class CartControllerTest {
     public void updateCartByNonZeroQty() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 1, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 2, 10);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -94,14 +94,14 @@ public class CartControllerTest {
     public void deleteCart() {
         Cart cart1 = new Cart();
         cart1.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 1, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 2, 10);
         cart1.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart1.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart1.getId(), cart1);
         Cart cart2 = new Cart();
         cart2.setId("222");
-        CartItem cartItem3 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 5);
+        CartItem cartItem3 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 1, 5);
         cart2.getItems().put(cartItem3.getProduct_id(), cartItem3);
         manageCart.putCart(cart2.getId(), cart2);
 
