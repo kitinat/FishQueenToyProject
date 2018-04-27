@@ -6,6 +6,8 @@ import workshop.toy.models.Cart;
 import workshop.toy.models.CartItem;
 import workshop.toy.models.ManageCart;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -44,8 +46,8 @@ public class CartController {
     }
 
     @GetMapping("/cart/{id}")
-    public Cart getCartDetail(@PathVariable String id) {
-        return manageCart.getCart(id);
+    public Collection<CartItem> getCartDetail(@PathVariable String id) {
+        return manageCart.getCart(id).getItems().values();
     }
 
     @GetMapping("/cart/{id}/{productId}/{qty}")

@@ -35,3 +35,6 @@ html {
 height: 200px;
     text-align: left;
 }
+.btn-chelsea{
+    -webkit-appearance: none !important;
+}
