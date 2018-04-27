@@ -93,15 +93,15 @@ function sendEmail(cart_id,orderH){
             "url" : "/rest/order/email/"+cart_id,
             "type" : "POST",
             "contentType" : "application/json; charset=utf-8",
-            "data" : JSON.stringify(cart_id,orderH),
-            "success" : function() {
+            "data" : JSON.stringify(orderH),
+            "success" : function(response) {
                     sessionStorage.removeItem("cart_id");
                     window.open("thankyou.html","_self");
             },
             "error" : function(response) {
                     //alert ('Fail to send e-mail');
-                    sessionStorage.removeItem("cart_id");
-                    window.open("thankyou.html","_self");
+                    //sessionStorage.removeItem("cart_id");
+                    //window.open("thankyou.html","_self");
             }
         });
 }
