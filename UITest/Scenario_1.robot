@@ -83,9 +83,10 @@ Add shipping detail and deliver
   Input Text   id:address1   เลขที่3 อาคารพร้อมพันธุ์ 2 ห้อง 1001 ชั้น 10
   Input Text   id:address2   ซอยลาดพร้าว 3
   Input Text   id:city   จตุจักร
-  Input Text   id:province กรุงเทพ
-  Input Text   id:post_code 10900
+  Input Text   id:province   กรุงเทพ
+  Input Text   id:post_code   10900
   Capture Page Screenshot
   Click Element   id:btn_add_cart
+  Wait Until Element Is Visible   id:confirm
   Click Element   id:confirm
   Capture Page Screenshot
