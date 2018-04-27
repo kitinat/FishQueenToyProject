@@ -26,9 +26,9 @@ var DETAILS = (function($) {
                     "data" : JSON.stringify(data),
                     "success" : function(response) {
                             console.log(response);
-                            alert("Success");
+                            //lert("Success");
                             sessionStorage.setItem('cart_id', response.id);
-                            alert(response.id);
+                            //alert(response.id);
                             window.open("shopping_cart.html","_self");
                     },
                     "error" : function(response) {
