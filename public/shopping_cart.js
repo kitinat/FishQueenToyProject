@@ -91,7 +91,7 @@
                         cart_detail += "</select>";
                         cart_detail += "</td>";
                         cart_detail += "<td> <span product-price='"+items[i].price+"'>"+items[i].price+"</span></td>";
-                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+items[i].price*items[i].qty+"</span></td>";
+                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+Math.round(items[i].price*items[i].qty*100)/100+"</span></td>";
                         cart_detail += "</tr>";
                         $( "#cart_detail" ).append(cart_detail);
                     }
