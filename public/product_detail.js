@@ -1,3 +1,4 @@
+var toy_qty_stock = 0;
 var DETAILS = (function($) {
 		return {
 			addToCart : function(){
@@ -6,7 +7,7 @@ var DETAILS = (function($) {
                     sessionStorage.setItem('cartId', 'empty');
                     cartId = sessionStorage.getItem("cartId");
                 }
-                //alert($("#toy_qty").val());
+//                alert(toy_qty_stock);
                 var data = {
                                         "product_id" : sessionStorage.getItem("sent_pid"),
                                         "product_name" : $("#toy_name").val(),
@@ -14,7 +15,9 @@ var DETAILS = (function($) {
                                         "age_name" : $("#toy_age").val(),
                                         "price" : $( "#toy_price").val(),
                                         "availability" : $("#toy_status").val(),
-                                        "qty" : $("#toy_qty").val()
+                                        "qty" : $("#toy_qty").val(),
+                                        "gender_name" : $( "#toy_gender" ).val(),
+                                        "stock_qty" : toy_qty_stock,
                                     }
                 return $.ajax({
                     "url" : "/rest/cart/"+cartId,
@@ -41,7 +44,7 @@ var DETAILS = (function($) {
 
             var toy_name = "";
             var toy_qty  = 0;
-            var toy_qty_stock = 0;
+
             var label_unit = "";
             var toy_brand = "";
             var toy_gender = "";
