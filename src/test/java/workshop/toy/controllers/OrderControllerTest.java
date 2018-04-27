@@ -158,7 +158,7 @@ public class OrderControllerTest {
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
 
-        OrderH orderH = new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "yuwadeek@gmail.com");
+        OrderH orderH = new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "fishqueentoy@gmail.com");
         orderH.setId(1);
         orderH.setOrderDate(new Timestamp(System.currentTimeMillis()));
 
