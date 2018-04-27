@@ -103,7 +103,13 @@
                     });
                     Subtotal=Math.round(Subtotal * 100) / 100;
                     $("#subtotal").text(Subtotal.toFixed(2));
-                    $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
+                    var count = ($('#cart_table tr').length-1);
+                    if(count == 1){
+                        $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " item) :");
+                    }else{
+                        $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
+                    }
+
 
                     $(".selectQty").on('change',function(event) {
                             CART.updateQty($(this));
