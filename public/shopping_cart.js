@@ -2,29 +2,30 @@
 	var CART = (function($) {
 		return {
 			getCart : function() {
-			            var cartId = sessionStorage.getItem("cartId");
+			            var cartId = sessionStorage.getItem("cart_id");
+
 			            return $.ajax({
                                         "url" : "rest/cart/"+cartId,
                                         "type" : "GET",
                                         "contentType" : "application/json; charset=utf-8",
                                         "success" : function(response) {
-                                                 alert("success");
-                                                 console.log("success");
-                                                 console.log(response);
+                                                 //alert("success");
+                                                 //console.log("success");
+                                                 //console.log(response);
                                                  //$.each(response.items, function (index, value) {
                                                  //    console.log(value);
                                                  //});
-                                                  alert(response.items.length);
-                                                  CART.render(response.items);
+                                                  //alert(response.items.length);
+                                                  CART.render(response);
                                         },
                                         "error" : function(response) {}
                                       });
 			},
 			addToCart : function(){
-                                var cartId = sessionStorage.getItem("cartId");
+                                var cartId = sessionStorage.getItem("cart_id");
                                 if (cartId == null){
-                                    sessionStorage.setItem('cartId', 'empty');
-                                    cartId = sessionStorage.getItem("cartId");
+                                    sessionStorage.setItem('cart_id', 'empty');
+                                    cartId = sessionStorage.getItem("cart_id");
                                 }
 
 			                    var data = {
@@ -53,16 +54,17 @@
                 				});
 			},
 			render : function(items){
-                   alert('render');
-                    $.each(items, function (key, item) {
-                        console.log(item);
-                    });
+                   //alert('render');
+                   $( "#cart_detail" ).empty();
+                    //$.each(items, function (key, item) {
+                    //    console.log(item);
+                    //});
                     var stock_status = '';
                     var drop_down_qty ='';
                     var Subtotal = 0;
                     for (var i = 0; i < items.length; i++) {
-                        console.log("item[i]");
-                        console.log(items[i]);
+                        //console.log("item[i]");
+                        //console.log(items[i]);
                         Subtotal = Subtotal + items[i].price;
                         if (items[i].stock_qty <1){
                             stock_status = "<div class='outstock'>Out of stock";
@@ -78,26 +80,33 @@
                         cart_detail += "<a href=del/'"+items[i].product_id+"' data-toggle='modal' data-target='#exampleModal'><i class='material-icons'>delete</i></a>";
                         cart_detail += "</th>";
                         cart_detail += "<td>";
-                        cart_detail += "<select id='"+items[i].product_id+"' class='selectQty' "+cboQtySts+">";
+                        cart_detail += "<select id='"+items[i].product_id+"' class='selectQty' "+items[i].qty+">";
                         for(max_stk = 1; max_stk <= items[i].stock_qty; max_stk++ ){
-                            cart_detail += "<option value='"+max_stk+"'>"+max_stk+"</option>";
+                            if(max_stk == items[i].qty){
+                                cart_detail += "<option value='"+max_stk+"' selected>"+max_stk+"</option>";
+                            }else{
+                                cart_detail += "<option value='"+max_stk+"'>"+max_stk+"</option>";
+                            }
                         };
                         cart_detail += "</select>";
                         cart_detail += "</td>";
                         cart_detail += "<td> <span product-price='"+items[i].price+"'>"+items[i].price+"</span></td>";
-                        cart_detail += "<td> <span class='price"+items[i].product_id+"' product-price='"+items[i].price+"'>"+items[i].price+"</span></td>";
+                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+items[i].price*items[i].qty+"</span></td>";
                         cart_detail += "</tr>";
                         $( "#cart_detail" ).append(cart_detail);
                     }
+
+                    Subtotal = 0;
+                    $( "#cart_table .price" ).each(function( index ) {
+                      console.log( index + ": " + $( this ).text() );
+                      Subtotal += parseFloat($( this ).text());
+                    });
                     $("#subtotal").text(Subtotal);
 			}
 
 		}
 	}(jQuery));
 $( document ).ready(function() {
-
-  CART.addToCart();
-  CART.addToCart();
 
   CART.getCart();
 
