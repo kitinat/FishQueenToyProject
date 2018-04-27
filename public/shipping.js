@@ -69,7 +69,7 @@ function sendEmail(cart_id,orderH){
             "contentType" : "application/json; charset=utf-8",
             "data" : JSON.stringify(cart_id,orderH),
             "success" : function() {
-                    //alert('sent ja');
+                    sessionStorage.removeItem("cart_id");
                     window.open("thankyou.html","_self");
             },
             "error" : function(response) {
