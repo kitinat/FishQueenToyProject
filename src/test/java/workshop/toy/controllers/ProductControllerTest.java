@@ -8,9 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import workshop.toy.models.Age;
 import workshop.toy.models.Product;
-import workshop.toy.repositories.AgeRepository;
 import workshop.toy.repositories.ProductRepository;
 
 import java.util.ArrayList;
@@ -30,11 +28,11 @@ public class ProductControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void successSearch() throws Exception {
+    public void successSearch() {
         List<Product> products = new ArrayList<>();
         products.add(new Product(1, "Test1", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock"));
         products.add(new Product(2, "Test2", 1, 1, 1, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock"));
-        given(productRepository.search("all","all"))
+        given(productRepository.search("all", "all"))
                 .willReturn(products);
 
         ResponseEntity<List> response
@@ -46,7 +44,7 @@ public class ProductControllerTest {
 
 
     @Test
-    public void successGetProductDetail() throws Exception {
+    public void successGetProductDetail() {
         Product product = new Product(1, "Test1", 2, 3, 4, 20.00, 10, "Neutral", "Baby", "CoolKidz", "In Stock");
         given(productRepository.getProductById(1))
                 .willReturn(product);
@@ -60,7 +58,7 @@ public class ProductControllerTest {
         assertEquals(2, response.getBody().getGender_id());
         assertEquals(3, response.getBody().getAge_id());
         assertEquals(4, response.getBody().getBrand_id());
-        assertEquals(20.00, response.getBody().getPrice(),2);
+        assertEquals(20.00, response.getBody().getPrice(), 2);
         assertEquals(10, response.getBody().getQty());
         assertEquals("Neutral", response.getBody().getGender_name());
         assertEquals("Baby", response.getBody().getAge_name());

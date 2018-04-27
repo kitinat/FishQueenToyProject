@@ -36,7 +36,7 @@ public class OrderControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void stockIsNotAvailableReturnN() throws Exception {
+    public void stockIsNotAvailableReturnN() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
@@ -54,11 +54,11 @@ public class OrderControllerTest {
                 = restTemplate.getForEntity("/rest/stock/111", String.class);
 
         assertEquals(200, response.getStatusCode().value());
-        assertEquals("N", response.getBody().toString());
+        assertEquals("N", response.getBody());
     }
 
     @Test
-    public void stockIsAvailableReturnY() throws Exception {
+    public void stockIsAvailableReturnY() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
@@ -76,11 +76,11 @@ public class OrderControllerTest {
                 = restTemplate.getForEntity("/rest/stock/111", String.class);
 
         assertEquals(200, response.getStatusCode().value());
-        assertEquals("Y", response.getBody().toString());
+        assertEquals("Y", response.getBody());
     }
 
     @Test
-    public void successUpdateCartWithCurrentStock() throws Exception {
+    public void successUpdateCartWithCurrentStock() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
@@ -106,7 +106,7 @@ public class OrderControllerTest {
 
 
     @Test
-    public void successUpdateStock() throws Exception {
+    public void successUpdateStock() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
@@ -127,7 +127,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void successCreateOrderH() throws Exception {
+    public void successCreateOrderH() {
         OrderH orderH = new OrderH("Mr.A1","9/99 Ladprao road","","Thailand","Bangkok","11111", "a1@gmail.com");
         given(orderHRepository.save(orderH)).willReturn(orderH);
 
@@ -138,7 +138,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void successCreateOrderD() throws Exception {
+    public void successCreateOrderD() {
         OrderD orderD = new OrderD(1,1,2,119.95);
         given(orderDRepository.save(orderD)).willReturn(orderD);
 
@@ -149,7 +149,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void successSendEmail() throws Exception {
+    public void successSendEmail() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);

@@ -11,7 +11,6 @@ import workshop.toy.util.EmailUtil;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Map;
 
 @RestController
@@ -33,10 +32,10 @@ public class OrderController {
     public String isAvailableStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
         String isAvailable = "Y";
-        for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
+        for (Map.Entry<String, CartItem> entry : cart.getItems().entrySet()) {
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
-            if(cartItem.getQty() > stockQty){
+            if (cartItem.getQty() > stockQty) {
                 isAvailable = "N";
                 break;
             }
@@ -47,12 +46,12 @@ public class OrderController {
     @GetMapping("/stock/cart/{cartId}")
     public Cart updateCartWithCurrentStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
-        for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
+        for (Map.Entry<String, CartItem> entry : cart.getItems().entrySet()) {
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
-            if(cartItem.getQty() > stockQty){
+            if (cartItem.getQty() > stockQty) {
                 cartItem.setQty(stockQty);
-                if(stockQty == 0){
+                if (stockQty == 0) {
                     cartItem.setAvailability("Out of Stock");
                 }
             }
@@ -63,14 +62,14 @@ public class OrderController {
     @GetMapping("/stock/product/{cartId}")
     public void updateStock(@PathVariable String cartId) {
         Cart cart = manageCart.getCart(cartId);
-        for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
+        for (Map.Entry<String, CartItem> entry : cart.getItems().entrySet()) {
             CartItem cartItem = entry.getValue();
             int stockQty = productRepository.getStockQtyById(Integer.parseInt(cartItem.getProduct_id()));
-            if(cartItem.getQty() <= stockQty){
-                System.out.println("Product id="+cartItem.getProduct_id());
-                System.out.println("CartItem.Qty="+cartItem.getQty());
-                System.out.println("stockQty="+stockQty);
-               productRepository.updateStockQty(Integer.parseInt(cartItem.getProduct_id()), (stockQty-cartItem.getQty()));
+            if (cartItem.getQty() <= stockQty) {
+                System.out.println("Product id=" + cartItem.getProduct_id());
+                System.out.println("CartItem.Qty=" + cartItem.getQty());
+                System.out.println("stockQty=" + stockQty);
+                productRepository.updateStockQty(Integer.parseInt(cartItem.getProduct_id()), (stockQty - cartItem.getQty()));
             }
         }
     }
@@ -89,7 +88,7 @@ public class OrderController {
     @PostMapping("/order/email/{cartId}")
     public void sendMail(@PathVariable String cartId, @RequestBody OrderH orderH) {
         String emailTo = orderH.getEmail();
-        String subject = "Confirm Order ID : "+orderH.getId();
+        String subject = "Confirm Order ID : " + orderH.getId();
         StringBuffer content = new StringBuffer();
 
         content.append("Order ID : ").append(orderH.getId()).append("\n");
@@ -97,7 +96,7 @@ public class OrderController {
         Cart cart = manageCart.getCart(cartId);
         int no = 1;
         BigDecimal totalPrice = new BigDecimal("0");
-        for (Map.Entry<String, CartItem> entry: cart.getItems().entrySet()){
+        for (Map.Entry<String, CartItem> entry : cart.getItems().entrySet()) {
             CartItem item = entry.getValue();
             content.append("Item ").append(no++).append(" : \n");
             content.append("Product Name : ").append(item.getProduct_name()).append("\n");

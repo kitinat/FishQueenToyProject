@@ -9,7 +9,6 @@ import workshop.toy.models.Product;
 import workshop.toy.repositories.ProductRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/rest")
@@ -20,8 +19,7 @@ public class ProductController {
 
     @GetMapping("/product/{ageId}/{genderId}")
     public List<Product> search(@PathVariable String ageId, @PathVariable String genderId) {
-        System.out.println(ageId+","+genderId);
-        return productRepository.search(ageId,genderId);
+        return productRepository.search(ageId, genderId);
     }
 
     @GetMapping("/product/{productId}")
