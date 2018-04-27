@@ -7,7 +7,7 @@ var DETAILS = (function($) {
                     sessionStorage.setItem('cart_id', 'empty');
                     cartId = sessionStorage.getItem("cart_id");
                 }
-                alert(toy_qty_stock);
+                //alert(toy_qty_stock);
                 var data = {
                                         "product_id" : sessionStorage.getItem("sent_pid"),
                                         "product_name" : $("#toy_name").val(),
