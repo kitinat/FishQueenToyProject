@@ -102,6 +102,7 @@
                       Subtotal += parseFloat($( this ).text());
                     });
                     $("#subtotal").text(Subtotal);
+                    $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
 			}
 
 		}
