@@ -51,12 +51,12 @@ function createOrderD(cart_id,orderH){
             "contentType" : "application/json; charset=utf-8",
             "data" : JSON.stringify(orderH),
             "success" : function() {
-                    alert('send mail');
+                    //alert('send mail');
                     sendEmail(cart_id,orderH)
             },
             "error" : function(response) {
-                    alert ('Fail to create order');
-                    sendEmail(cart_id,orderH);
+                    //alert ('Fail to create order');
+                    //sendEmail(cart_id,orderH);
             }
         });
 }
@@ -74,6 +74,7 @@ function sendEmail(cart_id,orderH){
             },
             "error" : function(response) {
                     alert ('Fail to send e-mail');
+                    window.open("thankyou.html","_self");
             }
         });
 }
