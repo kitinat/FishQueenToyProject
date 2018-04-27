@@ -18,23 +18,6 @@
     <!-- Jquery -->
     <script src="bootstrap-4.0.0/js/jquery-3.3.1.min.js" ></script>
 </head>
-        <script>
-            $(document).ready(function(){
-
-                $("#confirm").click(function(){
-                    alert ($("#fullname").val()+""+$("#email").val());
-                    $.ajax({
-                        type: 'POST',
-                        url: 'thankyou.html',
-                        data: $("#email").val(),
-                        success: function(data) { alert('data: ' + data); },
-                        contentType: "application/json",
-                        dataType: 'json'
-                    });
-                    window.open("thankyou.html","_self");
-                });
-            });
-        </script>
 
 <body>
     <!-- The form -->
@@ -42,11 +25,7 @@
     <div class="sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-blue border-bottom box-shadow">
 
         <h5 class="my-0 mr-md-auto font-weight-normal">Toy R Not Us</h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-white" href="index.html">Home</a>
-            <a class="p-2 text-white" href="shopping_cart.html">Cart <span class="badge badge-light" id="toy_in_cart">0</span></a>
-        </nav>
-        <a class="btn btn-outline-white " href="checkout.html">Checkout</a>
+
     </div>
 
 <div class="container">
@@ -54,8 +33,7 @@
     <div class="text-left">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item "><a class="a-white" href="#">Home</a></li>
-                <li class="breadcrumb-item "><a class="a-white" href="#">Shopping cart</a></li>
+                <li class="breadcrumb-item "><a class="a-white" href="index.html">Home</a></li>
                 <li class="breadcrumb-item text-white" aria-current="page">Shipping</li>
             </ol>
         </nav>
@@ -138,7 +116,7 @@
     <footer class="container container-footer">
         <div class="row">
             <div class="col-12 col-md">
-                <img class="mb-2" src="https://image.flaticon.com/icons/png/128/811/811643.png" alt="" width="24" height="24">
+                    <img class="mb-2" src="https://image.flaticon.com/icons/png/128/811/811643.png" alt="" width="24" height="24">
                 <small class="mb-3 text-muted">&copy; 2018 Toy R Not Us  Powered by FishQueen !</small>
             </div>
 
@@ -170,7 +148,9 @@
 <script src="bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+    <script src="shipping.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',

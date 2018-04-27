@@ -25,23 +25,27 @@
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-blue border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal">Toy R Not Us</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-white" href="index.html">Home</a>
-        <a class="p-2 text-white" href="shopping_cart.html">Cart</a>
-    </nav>
-    <a class="btn btn-outline-white " href="checkout.html">Checkout</a>
 </div>
 
 <div class="container">
+
+    <div class="text-left">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a class="a-white" href="index.html">Home</a></li>
+                <li class="breadcrumb-item text-white" aria-current="page">Shipping cart</li>
+            </ol>
+        </nav>
+    </div>
     <div class="card-deck mb-12">
         <div class="card mb-12 box-shadow">
         <div class="card-header">
             <h4 class="my-0 font-weight-normal">Shopping Cart</h4>
         </div>
-        <table class="table table-hover">
+        <table class="table table-hover" id="cart_table">
             <thead>
             <tr>
-                <th scope="col">Item</th>
+                <th scope="col" style="width:40%">Item</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price/Unit (THB)</th>
                 <th scope="col">Amount (THB)</th>
@@ -59,7 +63,8 @@
                 <div>Ship Fee: 50.00 THB</div>
             </div>
             <div class="right-col">
-                <div class="subtotal">Subtotal (2 items) :
+                <div class="subtotal">
+                    <span id="itemtotal" style="color:black;">Subtotal (2 items) :</span>
                     <span id="subtotal" style="color:red;"> 200.00 </span>THB
                 </div>
                 <div class="subtotal">Ship Fee: <span style="color:red;">50.00</span> THB</div>
@@ -106,7 +111,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-chelsea">Confirm</button>
+                    <button type="button" class="btn btn-chelsea" id="confirm_button">Confirm</button>
                 </div>
             </div>
         </div>

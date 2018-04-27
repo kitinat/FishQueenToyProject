@@ -2,16 +2,30 @@
 	var CART = (function($) {
 		return {
 			getCart : function() {
-			            var cartId = sessionStorage.getItem("cartId");
-                        $.getJSON("rest/cart/"+cartId, function (data) {
-                                                return data;
-                                           });
+			            var cartId = sessionStorage.getItem("cart_id");
+
+			            return $.ajax({
+                                        "url" : "rest/cart/"+cartId,
+                                        "type" : "GET",
+                                        "contentType" : "application/json; charset=utf-8",
+                                        "success" : function(response) {
+                                                 //alert("success");
+                                                 //console.log("success");
+                                                 //console.log(response);
+                                                 //$.each(response.items, function (index, value) {
+                                                 //    console.log(value);
+                                                 //});
+                                                  //alert(response.items.length);
+                                                  CART.render(response);
+                                        },
+                                        "error" : function(response) {}
+                                      });
 			},
 			addToCart : function(){
-                                var cartId = sessionStorage.getItem("cartId");
+                                var cartId = sessionStorage.getItem("cart_id");
                                 if (cartId == null){
-                                    sessionStorage.setItem('cartId', 'empty');
-                                    cartId = sessionStorage.getItem("cartId");
+                                    sessionStorage.setItem('cart_id', 'empty');
+                                    cartId = sessionStorage.getItem("cart_id");
                                 }
 
 			                    var data = {
@@ -30,23 +44,100 @@
                 					"contentType" : "application/json; charset=utf-8",
                 					"data" : JSON.stringify(data),
                 					"success" : function(response) {
-                					        console.log(response);
-                                            alert('success');
+                					        //console.log(response);
+                                            //alert('success');
+                                            sessionStorage.setItem('cartId', response.id);
                 					},
                 					"error" : function(response) {
 
                 					}
                 				});
 			},
+			render : function(items){
+                   //alert('render');
+                   $( "#cart_detail" ).empty();
+                    //$.each(items, function (key, item) {
+                    //    console.log(item);
+                    //});
+                    var stock_status = '';
+                    var drop_down_qty ='';
+                    var Subtotal = 0;
+                    for (var i = 0; i < items.length; i++) {
+                        //console.log("item[i]");
+                        //console.log(items[i]);
+                        Subtotal = Subtotal + items[i].price;
+                        if (items[i].stock_qty <1){
+                            stock_status = "<div class='outstock'>Out of stock";
+                            cboQtySts = 'disable';
+                        }else{
+                            stock_status = "<div class='instock'>In stock";
+                        };
+                        var cart_detail = "<tr>";
+                        cart_detail += "<th scope='row'>";
+                        cart_detail += "<div class='product_name'><b>"+items[i].product_name+" </b>&nbsp&nbsp&nbsp by "+items[i].brand_name+"</div>";
+                        cart_detail += "<div class='production_criteria'>Gender : "+items[i].gender_name+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAge : "+items[i].age_name+" </div>";
+                        cart_detail += stock_status+"&nbsp&nbsp(available stock : "+items[i].stock_qty+")</div>";
+                        cart_detail += "<a href=del/'"+items[i].product_id+"' data-toggle='modal' data-target='#exampleModal'><i class='material-icons'>delete</i></a>";
+                        cart_detail += "</th>";
+                        cart_detail += "<td>";
+                        cart_detail += "<select id='"+items[i].product_id+"' class='selectQty' "+items[i].qty+">";
+                        for(max_stk = 1; max_stk <= items[i].stock_qty; max_stk++ ){
+                            if(max_stk == items[i].qty){
+                                cart_detail += "<option value='"+max_stk+"' selected>"+max_stk+"</option>";
+                            }else{
+                                cart_detail += "<option value='"+max_stk+"'>"+max_stk+"</option>";
+                            }
+                        };
+                        cart_detail += "</select>";
+                        cart_detail += "</td>";
+                        cart_detail += "<td> <span product-price='"+items[i].price+"'>"+items[i].price+"</span></td>";
+                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+Math.round(items[i].price*items[i].qty*100)/100+"</span></td>";
+                        cart_detail += "</tr>";
+                        $( "#cart_detail" ).append(cart_detail);
+                    }
+
+                    Subtotal = 0;
+                    $( "#cart_table .price" ).each(function( index ) {
+                      console.log( index + ": " + $( this ).text() );
+                      Subtotal += parseFloat($( this ).text());
+                    });
+                    Subtotal=Math.round(Subtotal * 100) / 100;
+                    $("#subtotal").text(Subtotal);
+                    $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
+
+                    $(".selectQty").on('change',function(event) {
+                            CART.updateQty($(this));
+                    });
+			},
+			updateQty : function(obj){
+			    //alert('update' + $(obj).attr('id') +'==>' + $(obj).val());
+			    var cartId = sessionStorage.getItem("cart_id");
+			    var product_id = $(obj).attr('id');
+			    var qty = $(obj).val();
+			     $.getJSON("rest/cart/"+cartId+"/"+product_id+"/"+qty, function (data) {
+			        CART.getCart();
+			     });
+			}
 
 		}
 	}(jQuery));
 $( document ).ready(function() {
 
-  CART.addToCart();
+  CART.getCart();
+
+  $('#confirm_button').on('click',function(event) {
+        window.open("shipping.html","_self");
+  });
+
+  $(".selectQty").on('change',function(event) {
+        alert(1);
+   });
+
+
 
 
   // For ajax get cart id//
+/*
     var getProductID = [];
     var getProductName = [];
     var getBrand = [];
@@ -112,8 +203,10 @@ $( document ).ready(function() {
     }
 
     $("#subtotal").text(Subtotal);
-
+*/
+/*
     $(".selectQty").change(function() {
+      alert(1);
       var selectQty = this.value;
       var productID = this.id;
       var className = ".price"+productID;
@@ -121,7 +214,7 @@ $( document ).ready(function() {
       var amountPrice = selectQty*productPrice;
       $(className).text(amountPrice.toFixed(2));
 
-
     });
+*/
 
 });

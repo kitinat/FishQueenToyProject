@@ -85,6 +85,17 @@ public class OrderController {
         return orderDRepository.save(orderD);
     }
 
+    @PostMapping("/orderD/{cartId}")
+    public void createOrderDByCard(@PathVariable String cartId, @RequestBody OrderH orderH) {
+        Cart cart = manageCart.getCart(cartId);
+        int no = 1;
+        BigDecimal totalPrice = new BigDecimal("0");
+        for (Map.Entry<String, CartItem> entry : cart.getItems().entrySet()) {
+            CartItem item = entry.getValue();
+            orderDRepository.save(new OrderD(orderH.getId(),Integer.parseInt(item.getProduct_id()),item.getQty(),item.getPrice()));
+        }
+    }
+
     @PostMapping("/order/email/{cartId}")
     public void sendMail(@PathVariable String cartId, @RequestBody OrderH orderH) {
         String emailTo = orderH.getEmail();
