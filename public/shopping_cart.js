@@ -1,3 +1,29 @@
+
+	var CART = (function($) {
+		return {
+			getCart : function() {
+			            var cartId = sessionStorage.getItem("cardId");
+                        $.getJSON("rest/cart/"+cardId, function (data) {
+                                                return data;
+                                           });
+			},
+			addToCart : function(){
+			    				return $.ajax({
+                					"url" : "/wDM0/transaction/kanbanDelay/rest/orderNoComboBox",
+                					"type" : "POST",
+                					"contentType" : "application/json; charset=utf-8",
+                					"data" : JSON.stringify(formData),
+                					"success" : function(response) {
+
+                					},
+                					"error" : function(response) {
+
+                					}
+                				});
+			},
+
+		}
+	}(jQuery));
 $( document ).ready(function() {
   // For ajax get cart id//
     var getProductID = [];
@@ -36,7 +62,7 @@ $( document ).ready(function() {
     var stock_status = '';
     var drop_down_qty ='';
     var Subtotal = 0;
-    for (i = 0; i < getProductID.length; i++) {
+    for (var i = 0; i < getProductID.length; i++) {
         Subtotal = Subtotal + getPrice[i];
         if (getMaxStock[i] <1){
             stock_status = "<div class='outstock'>Out of stock";
