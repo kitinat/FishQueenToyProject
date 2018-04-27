@@ -2,10 +2,10 @@ var toy_qty_stock = 0;
 var DETAILS = (function($) {
 		return {
 			addToCart : function(){
-                var cartId = sessionStorage.getItem("cartId");
+                var cartId = sessionStorage.getItem("cart_id");
                 if (cartId == null){
-                    sessionStorage.setItem('cartId', 'empty');
-                    cartId = sessionStorage.getItem("cartId");
+                    sessionStorage.setItem('cart_id', 'empty');
+                    cartId = sessionStorage.getItem("cart_id");
                 }
 //                alert(toy_qty_stock);
                 var data = {
