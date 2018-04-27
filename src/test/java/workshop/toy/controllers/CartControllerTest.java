@@ -13,6 +13,9 @@ import workshop.toy.models.Cart;
 import workshop.toy.models.CartItem;
 import workshop.toy.models.ManageCart;
 
+import java.util.Collection;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -45,12 +48,11 @@ public class CartControllerTest {
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
 
-        ResponseEntity<Cart> response
-                = restTemplate.getForEntity("/rest/cart/111", Cart.class);
+        ResponseEntity<Collection> response
+                = restTemplate.getForEntity("/rest/cart/111", Collection.class);
 
         assertEquals(200, response.getStatusCode().value());
-        assertEquals("111", response.getBody().getId());
-        assertEquals(2, response.getBody().getItems().size());
+        assertEquals(2, response.getBody().size());
     }
 
     @Test
