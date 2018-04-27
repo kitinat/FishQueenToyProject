@@ -75,12 +75,12 @@ var DETAILS = (function($) {
                     $( "#toy_brand" ).val(toy_brand);
                     $( "#toy_gender" ).val(toy_gender);
                     $( "#toy_age" ).val(toy_age);
-                    $( "#toy_price" ).val(toy_price.toFixed(2));
+                    $( "#toy_price" ).val(toy_price.toFixed(2)+ " THB/ item");
                     $( "#toy_shipping" ).val(toy_shipping);
                     $( "#toy_status" ).val(toy_status);
                     $( "#toy_qty" ).val(toy_qty);
                     $( "#toy_total" ).val(toy_name +" x " +toy_qty +" "+ label_unit);
-                    $( "#toy_total_price" ).val(toy_price +" x " +toy_qty + " = " + toy_total_amt.toFixed(2)+"฿");
+                    $( "#toy_total_price" ).val(toy_price +" x " +toy_qty + " = " + toy_total_amt.toFixed(2)+" THB");
 
                     $("#product_img").attr("src","img/"+a+".png");
 
