@@ -7,7 +7,7 @@ var DETAILS = (function($) {
                     sessionStorage.setItem('cart_id', 'empty');
                     cartId = sessionStorage.getItem("cart_id");
                 }
-//                alert(toy_qty_stock);
+                alert(toy_qty_stock);
                 var data = {
                                         "product_id" : sessionStorage.getItem("sent_pid"),
                                         "product_name" : $("#toy_name").val(),
@@ -26,13 +26,13 @@ var DETAILS = (function($) {
                     "data" : JSON.stringify(data),
                     "success" : function(response) {
                             console.log(response);
-                            //alert("Success");
+                            alert("Success");
                             sessionStorage.setItem('cart_id', response.id);
-                            //alert(response.id);
+                            alert(response.id);
                             window.open("shopping_cart.html","_self");
                     },
                     "error" : function(response) {
-
+                        alert("Fail");
                     }
                 });
 			},
@@ -75,7 +75,7 @@ var DETAILS = (function($) {
                     $( "#toy_brand" ).val(toy_brand);
                     $( "#toy_gender" ).val(toy_gender);
                     $( "#toy_age" ).val(toy_age);
-                    $( "#toy_price" ).val(toy_price.toFixed(2)+ " THB/ item");
+                    $( "#toy_price" ).val(toy_price.toFixed(2));
                     $( "#toy_shipping" ).val(toy_shipping);
                     $( "#toy_status" ).val(toy_status);
                     $( "#toy_qty" ).val(toy_qty);
