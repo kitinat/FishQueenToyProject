@@ -9,8 +9,6 @@
         sessionStorage.setItem("sent_pid", product_id);
         window.open("product_detail.html","_self");
 
-
-
     };
 
     function getAge(){
@@ -71,6 +69,9 @@
 
 
     function renderProduct(searchResult,id,product_name,price,availability) {
+
+        if (product_name.length >20)
+            product_name = product_name.substring(0, 20)+"...";
 
         var card  = "<div class='card col-sm-2 zeropadding' style='display:inline-grid;'' >";
         card += "<img class='card-img-top' src='img/"+id+".png' alt='Card image cap'>";

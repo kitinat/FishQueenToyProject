@@ -1,4 +1,51 @@
+
+	var CART = (function($) {
+		return {
+			getCart : function() {
+			            var cartId = sessionStorage.getItem("cartId");
+                        $.getJSON("rest/cart/"+cartId, function (data) {
+                                                return data;
+                                           });
+			},
+			addToCart : function(){
+                                var cartId = sessionStorage.getItem("cartId");
+                                if (cartId == null){
+                                    sessionStorage.setItem('cartId', 'empty');
+                                    cartId = sessionStorage.getItem("cartId");
+                                }
+
+			                    var data = {
+                                						"product_id" : "2",
+                                						"product_name" : "43 Piece dinner Set",
+                                						"brand_name" : "CoolKidz",
+                                						"age_name" : "3_to_5",
+                                						"price" : 0,
+                                						"availability" : "",
+                                						"qty" : 10
+
+                                					}
+			    				return $.ajax({
+                					"url" : "/rest/cart/"+cartId,
+                					"type" : "POST",
+                					"contentType" : "application/json; charset=utf-8",
+                					"data" : JSON.stringify(data),
+                					"success" : function(response) {
+                					        console.log(response);
+                                            alert('success');
+                					},
+                					"error" : function(response) {
+
+                					}
+                				});
+			},
+
+		}
+	}(jQuery));
 $( document ).ready(function() {
+
+  CART.addToCart();
+
+
   // For ajax get cart id//
     var getProductID = [];
     var getProductName = [];
@@ -36,7 +83,7 @@ $( document ).ready(function() {
     var stock_status = '';
     var drop_down_qty ='';
     var Subtotal = 0;
-    for (i = 0; i < getProductID.length; i++) {
+    for (var i = 0; i < getProductID.length; i++) {
         Subtotal = Subtotal + getPrice[i];
         if (getMaxStock[i] <1){
             stock_status = "<div class='outstock'>Out of stock";
