@@ -33,11 +33,47 @@ $("#confirm").click(function(){
         "contentType" : "application/json; charset=utf-8",
         "data" : JSON.stringify(data),
         "success" : function(response) {
-                alert(response.id)
+//                alert(response.id);
+                createOrderD(cartId,response);
         },
         "error" : function(response) {
-
+                     alert ('Error1');
         }
     });
 
 });
+
+function createOrderD(cart_id,orderH){
+
+    return $.ajax({
+            "url" : "/rest/orderD/"+cart_id,
+            "type" : "POST",
+            "contentType" : "application/json; charset=utf-8",
+            "data" : JSON.stringify(orderH),
+            "success" : function() {
+                    alert('send mail');
+                    sendEmail(cart_id,orderH)
+            },
+            "error" : function(response) {
+                    alert ('Fail to create order');
+                    sendEmail(cart_id,orderH);
+            }
+        });
+}
+
+function sendEmail(cart_id,orderH){
+
+    return $.ajax({
+            "url" : "/rest/order/email/"+cart_id,
+            "type" : "POST",
+            "contentType" : "application/json; charset=utf-8",
+            "data" : JSON.stringify(cart_id,orderH),
+            "success" : function() {
+                    alert('sent ja');
+                    window.open("thankyou.html","_self");
+            },
+            "error" : function(response) {
+                    alert ('Fail to send e-mail');
+            }
+        });
+}
