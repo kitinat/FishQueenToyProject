@@ -9,6 +9,7 @@ import workshop.toy.models.Product;
 import workshop.toy.repositories.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/rest")
@@ -27,6 +28,4 @@ public class ProductController {
     public Product getProductDetail(@PathVariable int productId) {
         return productRepository.getProductById(productId);
     }
-
-
 }

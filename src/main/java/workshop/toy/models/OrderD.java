@@ -10,6 +10,14 @@ public class OrderD {
     private int qty;
     private double unitPrice;
 
+    public OrderD(){}
+    public OrderD(int orderHId, int productId, int qty, double unitPrice) {
+        this.orderHId = orderHId;
+        this.productId = productId;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+    }
+
     public int getId() {
         return id;
     }
