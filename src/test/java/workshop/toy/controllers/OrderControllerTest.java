@@ -39,8 +39,8 @@ public class OrderControllerTest {
     public void stockIsNotAvailableReturnN() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 13);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 2, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 13, 20);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -61,8 +61,8 @@ public class OrderControllerTest {
     public void stockIsAvailableReturnY() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 13);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 2, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 13, 20);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -83,8 +83,8 @@ public class OrderControllerTest {
     public void successUpdateCartWithCurrentStock() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 13);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 2, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 13, 20);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -109,8 +109,8 @@ public class OrderControllerTest {
     public void successUpdateStock() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 3);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 2, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 3, 20);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
@@ -152,8 +152,8 @@ public class OrderControllerTest {
     public void successSendEmail() {
         Cart cart = new Cart();
         cart.setId("111");
-        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 2);
-        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 3);
+        CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "Neutral", "3_to_5", 119.95, "In Stock", 2, 10);
+        CartItem cartItem2 = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "Neutral", "3_to_5", 12.95, "In Stock", 3, 20);
         cart.getItems().put(cartItem1.getProduct_id(), cartItem1);
         cart.getItems().put(cartItem2.getProduct_id(), cartItem2);
         manageCart.putCart(cart.getId(), cart);
