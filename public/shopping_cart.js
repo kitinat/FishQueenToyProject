@@ -2,19 +2,36 @@
 	var CART = (function($) {
 		return {
 			getCart : function() {
-			            var cartId = sessionStorage.getItem("cardId");
-                        $.getJSON("rest/cart/"+cardId, function (data) {
+			            var cartId = sessionStorage.getItem("cartId");
+                        $.getJSON("rest/cart/"+cartId, function (data) {
                                                 return data;
                                            });
 			},
 			addToCart : function(){
+                                var cartId = sessionStorage.getItem("cartId");
+                                if (cartId == null){
+                                    sessionStorage.setItem('cartId', 'empty');
+                                    cartId = sessionStorage.getItem("cartId");
+                                }
+
+			                    var data = {
+                                						"product_id" : "2",
+                                						"product_name" : "43 Piece dinner Set",
+                                						"brand_name" : "CoolKidz",
+                                						"age_name" : "3_to_5",
+                                						"price" : 0,
+                                						"availability" : "",
+                                						"qty" : 10
+
+                                					}
 			    				return $.ajax({
-                					"url" : "/wDM0/transaction/kanbanDelay/rest/orderNoComboBox",
+                					"url" : "/rest/cart/"+cartId,
                 					"type" : "POST",
                 					"contentType" : "application/json; charset=utf-8",
-                					"data" : JSON.stringify(formData),
+                					"data" : JSON.stringify(data),
                 					"success" : function(response) {
-
+                					        console.log(response);
+                                            alert('success');
                 					},
                 					"error" : function(response) {
 
@@ -25,6 +42,10 @@
 		}
 	}(jQuery));
 $( document ).ready(function() {
+
+  CART.addToCart();
+
+
   // For ajax get cart id//
     var getProductID = [];
     var getProductName = [];
