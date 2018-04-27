@@ -101,6 +101,7 @@
                       console.log( index + ": " + $( this ).text() );
                       Subtotal += parseFloat($( this ).text());
                     });
+                    Subtotal=Math.round(Subtotal * 100) / 100;
                     $("#subtotal").text(Subtotal);
                     $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
 
