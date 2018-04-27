@@ -117,7 +117,8 @@ public class OrderController {
             totalPrice = totalPrice.add(new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP).multiply(new BigDecimal(item.getQty())).setScale(2, RoundingMode.HALF_UP));
         }
 
-        content.append("Total price : ").append(totalPrice.doubleValue());
+        content.append("Total price : ").append(totalPrice.doubleValue()).append(" THB\n");
+        content.append("Shipping Fee : 50 THB\n");
 
         EmailUtil.sendEmail(emailTo, subject, content.toString());
     }
