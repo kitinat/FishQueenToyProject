@@ -91,7 +91,7 @@
                         cart_detail += "</select>";
                         cart_detail += "</td>";
                         cart_detail += "<td> <span product-price='"+items[i].price+"'>"+items[i].price+"</span></td>";
-                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+Math.round(items[i].price*items[i].qty*100)/100+"</span></td>";
+                        cart_detail += "<td> <span class='price' product-price='"+items[i].price*items[i].qty+"'>"+(Math.round(items[i].price*items[i].qty*100)/100).toFixed(2)+"</span></td>";
                         cart_detail += "</tr>";
                         $( "#cart_detail" ).append(cart_detail);
                     }
@@ -102,7 +102,7 @@
                       Subtotal += parseFloat($( this ).text());
                     });
                     Subtotal=Math.round(Subtotal * 100) / 100;
-                    $("#subtotal").text(Subtotal);
+                    $("#subtotal").text(Subtotal.toFixed(2));
                     $("#itemtotal").text("Subtotal (" + ($('#cart_table tr').length-1) + " items) :");
 
                     $(".selectQty").on('change',function(event) {
