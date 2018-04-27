@@ -77,7 +77,7 @@
         card += "<img class='card-img-top' src='img/"+id+".png' alt='Card image cap'>";
         card += "<div class='card-body'>";
         card += "<h5 class='card-title' >"+product_name+"</h5>";
-        card += "<p class='card-text' >"+price+" ฿ ("+availability+")</p>";
+        card += "<p class='card-text' >"+price+" THB ("+availability+")</p>";
         card += "<div type='button' id=toy_"+id+" class='btn btn-chelsea pid_detail float-right bottom' onclick='gotoDetail("+id+");'>Product Detail</div>";
         card += "</div>";
         card += "</div>";
