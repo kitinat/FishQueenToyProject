@@ -18,23 +18,6 @@
     <!-- Jquery -->
     <script src="bootstrap-4.0.0/js/jquery-3.3.1.min.js" ></script>
 </head>
-        <script>
-            $(document).ready(function(){
-
-                $("#confirm").click(function(){
-                    alert ($("#fullname").val()+""+$("#email").val());
-                    $.ajax({
-                        type: 'POST',
-                        url: 'thankyou.html',
-                        data: $("#email").val(),
-                        success: function(data) { alert('data: ' + data); },
-                        contentType: "application/json",
-                        dataType: 'json'
-                    });
-                    window.open("thankyou.html","_self");
-                });
-            });
-        </script>
 
 <body>
     <!-- The form -->
@@ -170,7 +153,9 @@
 <script src="bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
 <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+    <script src="shipping.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',
