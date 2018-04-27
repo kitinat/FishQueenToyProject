@@ -72,8 +72,9 @@ Check total
 
 
 Click process to checkout
-  Click Element  id:btn_process
-  Click Element  class:btn btn-chelsea
+  Click Element   id:btn_process
+  Wait Until Element Is Visible   id:confirm_button
+  Click button   id:confirm_button
 
 
 Add shipping detail and deliver
