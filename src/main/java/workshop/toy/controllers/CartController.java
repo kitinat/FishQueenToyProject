@@ -22,10 +22,7 @@ public class CartController {
 
     @PostMapping("/cart/{id}")
     public Cart addCart(@PathVariable String id, @RequestBody CartItem cartItem) {
-        System.out.println("addCart");
-        Cart cart = addCartItem(id, cartItem);
-
-        return cart;
+        return addCartItem(id, cartItem);
     }
 
     public Cart addCartItem(String id, CartItem cartItem) {

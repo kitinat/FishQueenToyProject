@@ -28,7 +28,7 @@ public class AgeControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void success() throws Exception {
+    public void successGetAgeList() {
         List<Age> ages = new ArrayList<>();
         ages.add(new Age(1, "Test1"));
         ages.add(new Age(2, "Test2"));

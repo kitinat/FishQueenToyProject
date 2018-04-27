@@ -28,7 +28,7 @@ public class GenderControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void success() throws Exception {
+    public void successGetGenderList() {
         List<Gender> gender = new ArrayList<>();
         gender.add(new Gender(1, "Test1"));
         gender.add(new Gender(2, "Test2"));

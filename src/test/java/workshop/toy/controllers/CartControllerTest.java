@@ -26,7 +26,7 @@ public class CartControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void successAddCart() throws Exception {
+    public void successAddCart() {
         CartItem cartItem = new CartItem("2", "43 Piece dinner Set", "CoolKidz", "3_to_5", 12.95, "In Stock", 10);
         HttpEntity<CartItem> cartItemHttpEntity = new HttpEntity<>(cartItem);
         ResponseEntity<Cart> response
@@ -36,7 +36,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void successGetCartDetail() throws Exception {
+    public void successGetCartDetail() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
@@ -54,7 +54,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void updateCartByZeroQty() throws Exception {
+    public void updateCartByZeroQty() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
@@ -72,7 +72,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void updateCartByNonZeroQty() throws Exception {
+    public void updateCartByNonZeroQty() {
         Cart cart = new Cart();
         cart.setId("111");
         CartItem cartItem1 = new CartItem("1", "Balance Training Bicycle", "SportsFun", "3_to_5", 119.95, "In Stock", 10);
