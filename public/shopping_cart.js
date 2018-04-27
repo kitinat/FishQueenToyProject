@@ -110,6 +110,10 @@ $( document ).ready(function() {
 
   CART.getCart();
 
+  $('#confirm_button').on('click',function(event) {
+        window.open("shipping.html","_self");
+  });
+
 
 
 
